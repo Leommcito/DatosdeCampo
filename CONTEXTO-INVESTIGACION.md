@@ -45,6 +45,8 @@ Investigar por qué **la cámara nativa en modo automático es perjudicial** par
 
 **Respaldo requerido:** Papers que demuestren que el focus hunting, autoexposición y AWB automático degradan la calidad de datasets para detección/tracking.
 
+**Nota:** Los prompts finales optimizados para cada plataforma están en la sección de herramientas de investigación al final de este documento.
+
 ### 2. Registro de Telemetría (IMU) en Tiempo Real
 
 Necesidad de ejecutar aplicaciones como **Sensor Logger** en segundo plano durante la caminata por el huerto para registrar:
