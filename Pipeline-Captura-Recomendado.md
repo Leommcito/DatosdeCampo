@@ -8,16 +8,16 @@
 
 **Decisión:** Open Camera (gratis, open-source, Camera2 API)
 
-| Característica | Por qué la elegimos | Fuente |
-|---|---|---|
-| AF Lock | Evita focus hunting al caminar entre ramas | Documentación Open Camera |
-| AE Lock | Evita cambios de exposición sol/sombra | Documentación Open Camera |
-| WB Lock | Evita cambios de color cielo/nube/sombra | Documentación Open Camera |
-| ISO manual | Fija ISO bajo para minimizar ruido | Documentación Open Camera |
-| Shutter manual | Fija velocidad para congelar/blur controlado | Documentación Open Camera |
-| Bitrate configurable | Calidad constante en todo el video | Documentación Open Camera |
-| Gratis + open-source | Reproducible. Sin barrera económica. | SourceForge |
-| Sin marca de agua | A diferencia de apps gratuitas con watermark | — |
+| Característica | Por qué la elegimos | Fuente | Ref. |
+|---|---|---|---|
+| AF Lock | Evita focus hunting al caminar entre ramas | Documentación Open Camera | [D1], [P40] |
+| AE Lock | Evita cambios de exposición sol/sombra | Documentación Open Camera | [D1], [P40], [P41] |
+| WB Lock | Evita cambios de color cielo/nube/sombra | Documentación Open Camera | [D1] |
+| ISO manual | Fija ISO bajo para minimizar ruido | Documentación Open Camera | [D1], [P40] |
+| Shutter manual | Fija velocidad para congelar/blur controlado | Documentación Open Camera | [D1], [P40] |
+| Bitrate configurable | Calidad constante en todo el video | Documentación Open Camera | [D1] |
+| Gratis + open-source | Reproducible. Sin barrera económica. | SourceForge | [D1] |
+| Sin marca de agua | A diferencia de apps gratuitas con watermark | — | — |
 
 **Apps descartadas:**
 - **Filmic Pro** ($5/semana): Subscription cara. Perfiles Log innecesarios para detección.
@@ -43,10 +43,10 @@ Codec: H.264 por compatibilidad
 
 **Decisión:** Gimbal mecánico + Gyroflow (post-procesamiento)
 
-| Componente | Justificación | Fuente |
-|---|---|---|
-| **Gimbal DJI Osmo Mobile SE/6** | Elimina micro-shake sin warpear la imagen. El EIS deforma y confunde a detectores basados en geometría. | Comparativas técnicas de gimbals (ver referencias) |
-| **Gyroflow** | Estabilización basada en datos IMU reales. Corrige rolling shutter + distorsión de lente. No warpea. | [gyroflow.xyz](https://gyroflow.xyz) — 8.9k stars GitHub |
+| Componente | Justificación | Fuente | Ref. |
+|---|---|---|---|
+| **Gimbal DJI Osmo Mobile SE/6** | Elimina micro-shake sin warpear la imagen. El EIS deforma y confunde a detectores basados en geometría. | Comparativas técnicas de gimbals (ver referencias) | [P43] |
+| **Gyroflow** | Estabilización basada en datos IMU reales. Corrige rolling shutter + distorsión de lente. No warpea. | [gyroflow.xyz](https://gyroflow.xyz) — 8.9k stars GitHub | [P11], [P13], [P18], [D2] |
 
 **Gimbals recomendados (ordenados por precio):**
 1. DJI Osmo Mobile SE (~$99) — 8h batería, magnético, plegable
@@ -61,10 +61,10 @@ Codec: H.264 por compatibilidad
 
 **Decisión:** OpenCamera Sensors (fork) + Sensor Logger (backup)
 
-| App | Ventaja | Fuente |
-|---|---|---|
-| **OpenCamera Sensors (fork)** | Video + IMU sincronizados en el mismo clock nativo. Sin sync post-hoc. | [GitHub prime-slam](https://github.com/prime-slam/opencamera-sensors) |
-| **Sensor Logger** | Backup validado en investigación. Exporta CSV/JSON. Background recording. | [tszheichoi.com](https://www.tszheichoi.com/sensorlogger); Choi (CEUR Workshop, 2024) |
+| App | Ventaja | Fuente | Ref. |
+|---|---|---|---|
+| **OpenCamera Sensors (fork)** | Video + IMU sincronizados en el mismo clock nativo. Sin sync post-hoc. | [GitHub prime-slam](https://github.com/prime-slam/opencamera-sensors) | [D4] |
+| **Sensor Logger** | Backup validado en investigación. Exporta CSV/JSON. Background recording. | [tszheichoi.com](https://www.tszheichoi.com/sensorlogger); Choi (CEUR Workshop, 2024) | [P23], [D3] |
 
 **Frecuencia de muestreo suficiente:** **100 Hz** para caminata (~0.5-1.2 m/s).
 - Respaldo: Fan et al. (2025) — Sensors MDPI — walking a 1.2 m/s con 100 Hz es suficiente
@@ -77,11 +77,11 @@ Codec: H.264 por compatibilidad
 
 **Decisión:** OpenCamera Sensors (sincronización nativa) / Clap sync
 
-| Método | Precisión | Cuándo usarlo |
-|---|---|---|
-| **OpenCamera Sensors** | Frame-level | Opción A — sincronización nativa en el mismo clock |
-| **Clap sync** | ~1-2 frames | Opción B — si se usan apps separadas (grabar un aplauso audible) |
-| **Sync de Gyroflow** | <200ms típico | Cuando se usa Sensor Logger como fuente externa |
+| Método | Precisión | Cuándo usarlo | Ref. |
+|---|---|---|---|
+| **OpenCamera Sensors** | Frame-level | Opción A — sincronización nativa en el mismo clock | [D4] |
+| **Clap sync** | ~1-2 frames | Opción B — si se usan apps separadas (grabar un aplauso audible) | [P24] |
+| **Sync de Gyroflow** | <200ms típico | Cuando se usa Sensor Logger como fuente externa | [D2] |
 
 **Respaldo:** MARS Logger paper (arXiv 2001.00470) — sincronización Camera2 API + SensorEvent en Android con offsets <5ms.
 
@@ -91,10 +91,10 @@ Codec: H.264 por compatibilidad
 
 **Decisión:** OpenCV + patrón Charuco (una vez al inicio del proyecto)
 
-| Herramienta | Justificación | Fuente |
-|---|---|---|
-| OpenCV | Gratis, bien documentado. RMSE < 1px. | — |
-| MATLAB Camera Calibrator | Alternativa paga pero más fácil | Con licencia |
+| Herramienta | Justificación | Fuente | Ref. |
+|---|---|---|---|
+| OpenCV + Charuco | Gratis, bien documentado. RMSE < 1px. | — | [P10], [P03] |
+| MATLAB Camera Calibrator | Alternativa paga pero más fácil | Con licencia | — |
 
 **Respaldo:** Elicit encontró 3 papers de calibración móvil. El más relevante (Peng et al., 2020) reporta corrección en GPU a 25fps en Android.
 
@@ -106,12 +106,12 @@ Codec: H.264 por compatibilidad
 
 **Decisión:** Gyroflow (estabilización + rolling shutter + distorsión) → (Opcional) Deblurring → YOLO
 
-| Paso | Algoritmo | Propósito | Respaldo |
-|---|---|---|---|
-| 1 | Gyroflow | Estabilizar + corregir rolling shutter + corregir distorsión | docs.gyroflow.xyz |
-| 2 | Frame selection (FFmpeg) | Descartar frames borrosos | Ingeniería de video |
-| 3 | (Opcional) Deblurring | Eliminar motion blur residual | D2-YOLO paper (citrus) |
-| 4 | **YOLO + ByteTrack/CoTracker3** | Detección y tracking | — |
+| Paso | Algoritmo | Propósito | Respaldo | Ref. |
+|---|---|---|---|---|---|
+| 1 | Gyroflow | Estabilizar + corregir rolling shutter + corregir distorsión | docs.gyroflow.xyz | [P11], [P13], [P18], [D2] |
+| 2 | Frame selection (FFmpeg) | Descartar frames borrosos | Ingeniería de video | — |
+| 3 | (Opcional) Deblurring | Eliminar motion blur residual | D2-YOLO paper (citrus) | [P22] |
+| 4 | **YOLO + ByteTrack/CoTracker3** | Detección y tracking | — | [P34], [P35] |
 
 **Respaldo:** Elicit encontró que el patrón en papers agrícolas es: capturar → rectificar temprano → detectar sobre frames limpios.
 
@@ -119,13 +119,13 @@ Codec: H.264 por compatibilidad
 
 ### Etapa 7 — Pipeline de Datos
 
-| Parámetro | Recomendación | Razón |
-|---|---|---|
-| **Formato** | MP4 | Universal |
-| **Codec** | H.264 | Compatibilidad con todas las herramientas |
-| **Bitrate** | 50 Mbps (4K) / 20 Mbps (1080p) | Calidad suficiente para detección |
-| **Extracción frames** | FFmpeg: `select=not(mod(n\,N))` | N = 1 para 30fps, N = 2 para 15fps |
-| **Metadata** | ExifTool para GPS timestamps | Organización del dataset |
+| Parámetro | Recomendación | Razón | Ref. |
+|---|---|---|---|---|
+| **Formato** | MP4 | Universal | — |
+| **Codec** | H.264 | Compatibilidad con todas las herramientas | — |
+| **Bitrate** | 50 Mbps (4K) / 20 Mbps (1080p) | Calidad suficiente para detección | [P28] |
+| **Extracción frames** | FFmpeg: `select=not(mod(n\,N))` | N = 1 para 30fps, N = 2 para 15fps | — |
+| **Metadata** | ExifTool para GPS timestamps | Organización del dataset | — |
 
 ---
 
@@ -205,33 +205,33 @@ POST-PROCESAMIENTO (después):
 
 ## Justificación académica por capa — ACTUALIZADO con papers reales
 
-| Decisión | Tipo de evidencia | Fuente (paper real) |
-|---|---|---|
-| Open Camera vs nativa | Documentación técnica | [Open Camera Help](https://opencamera.sourceforge.io/help.html) |
-| AF/AE/WB Lock | **Indirecta** — papers que demuestran que iluminación variable degrada detección | **FNF paper** (Kurtser et al.): exposición fija 20µs mejora detección. **ICNet (2025)**: compensación de iluminación mejora PSNR 28→40.79dB. **Coffee monitoring (Sensors, 2020)**: AUTO causa blur, necesitaron IMU para seleccionar frames. |
-| Shutter 1/60-1/120 | Paper + Regla 180° | **Rolling shutter + distance (Sensors, 2020)**: RSE inversamente proporcional a distancia, lineal con velocidad. **Rice GMC (Sensors, 2021)**: ISO=25, shutter=1/400s fijo. |
-| ISO 100-200 | Paper que fijó ISO | **Rice GMC (Sensors, 2021)**: ISO=25 fijo para minimizar variabilidad. |
-| Gimbal | **Paper directo** | **Gašparović & Jurjević**: gimbal mejora 6x estabilidad de orientación. Roll/pitch 69.9°→2.56°. **sUAS gimbal survey**: MIS (gimbal) > OIS > DIS. |
-| Sensor Logger 100Hz | Paper específico | **Fan et al. (2025)** — Sensors MDPI. Walking 1.2m/s, 100Hz suficiente. |
-| Gyroflow | Documentación técnica + GitHub | [gyroflow.xyz](https://gyroflow.xyz) — 8.9k stars. Soporta Sensor Logger. |
-| Distancia 0.3-1.5m | **Paper que compara distancias** | **Kuznetsova et al. (2020)** — YOLOv3 apple detection. Comparó **0.2m, 0.5m, 1.0m, 2.0m** con Nikon D3500. También comparó ángulos (front, side, back, scattered). |
-| Velocidad de caminata | Paper que reporta velocidad | **OrangeYolo (2024)**: rover a **2 m/s** uniforme, DJI Osmo Action, 60fps 1080p. **Coffee monitoring (2020)**: **3 cm/s** sobre rama, máx 5 cm/s para evitar blur. |
-| 4K 30fps | Inferencia + papers que usan altas resoluciones | **Apple YOLOv3 (2020)**: usaron 3888×5184 a 4032×3024. **Rice GMC (2021)**: 4032×3024. Múltiples papers. |
+| Decisión | Tipo de evidencia | Fuente (paper real) | Ref. |
+|---|---|---|---|---|
+| Open Camera vs nativa | Documentación técnica | [Open Camera Help](https://opencamera.sourceforge.io/help.html) | [D1] |
+| AF/AE/WB Lock | **Indirecta** — papers que demuestran que iluminación variable degrada detección | **FNF paper** (Kurtser et al.): exposición fija 20µs mejora detección. **ICNet (2025)**: compensación de iluminación mejora PSNR 28→40.79dB. **Coffee monitoring (Sensors, 2020)**: AUTO causa blur, necesitaron IMU para seleccionar frames. | [P40], [P41], [P27] |
+| Shutter 1/60-1/120 | Paper + Regla 180° | **Rolling shutter + distance (Sensors, 2020)**: RSE inversamente proporcional a distancia, lineal con velocidad. **Rice GMC (Sensors, 2021)**: ISO=25, shutter=1/400s fijo. | [P40] |
+| ISO 100-200 | Paper que fijó ISO | **Rice GMC (Sensors, 2021)**: ISO=25 fijo para minimizar variabilidad. | [P40] |
+| Gimbal | **Paper directo** | **Gašparović & Jurjević**: gimbal mejora 6x estabilidad de orientación. Roll/pitch 69.9°→2.56°. **sUAS gimbal survey**: MIS (gimbal) > OIS > DIS. | [P43] |
+| Sensor Logger 100Hz | Paper específico | **Fan et al. (2025)** — Sensors MDPI. Walking 1.2m/s, 100Hz suficiente. | [P25] |
+| Gyroflow | Documentación técnica + GitHub | [gyroflow.xyz](https://gyroflow.xyz) — 8.9k stars. Soporta Sensor Logger. | [P11], [P13], [P18], [D2] |
+| Distancia 0.3-1.5m | **Paper que compara distancias** | **Kuznetsova et al. (2020)** — YOLOv3 apple detection. Comparó **0.2m, 0.5m, 1.0m, 2.0m** con Nikon D3500. También comparó ángulos (front, side, back, scattered). | [P28] |
+| Velocidad de caminata | Paper que reporta velocidad | **OrangeYolo (2024)**: rover a **2 m/s** uniforme, DJI Osmo Action, 60fps 1080p. **Coffee monitoring (2020)**: **3 cm/s** sobre rama, máx 5 cm/s para evitar blur. | [P31], [P27] |
+| 4K 30fps | Inferencia + papers que usan altas resoluciones | **Apple YOLOv3 (2020)**: usaron 3888×5184 a 4032×3024. **Rice GMC (2021)**: 4032×3024. Múltiples papers. | [P28] |
 
 ### Nivel de respaldo por decisión
 
-| Decisión | ¿Respaldo real en paper con nombre? | Confianza |
-|---|---|---|
-| Open Camera (app específica) | ❌ Inferencia — ningún paper agrícola nombra Open Camera | Baja |
-| AF/AE/WB Lock | ⚠️ Indirecto — papers demuestran que estabilizar captura mejora detección | Media |
-| Shutter 1/60-1/120 | ⚠️ Parcial — hay papers que fijan shutter | Media |
-| ISO 100-200 | ⚠️ Parcial — hay paper que fija ISO=25 | Media |
-| **Gimbal** | ✅ **Sí, paper directo** — Gašparović & Jurjević | **Alta** |
-| **Sensor Logger 100Hz** | ✅ **Sí, paper directo** — Fan et al. (2025) | **Alta** |
-| **Gyroflow** | ✅ Sí — docs técnicas + GitHub + papers IMU | **Alta** |
-| **Distancia 0.3-1.5m** | ✅ **Sí, paper compara distancias** — Kuznetsova et al. (2020) | **Alta** |
-| Velocidad caminata | ⚠️ Reportado pero no comparado — OrangeYolo a 2m/s, Coffee a 3cm/s | Media |
-| 4K 30fps | ⚠️ Inferencia — papers usan altas resoluciones pero no comparan | Media |
+| Decisión | ¿Respaldo real en paper con nombre? | Confianza | Referencias |
+|---|---|---|---|---|
+| Open Camera (app específica) | ❌ Inferencia — ningún paper agrícola nombra Open Camera | Baja | [D1] |
+| AF/AE/WB Lock | ⚠️ Indirecto — papers demuestran que estabilizar captura mejora detección | Media | [P40], [P41] |
+| Shutter 1/60-1/120 | ⚠️ Parcial — hay papers que fijan shutter | Media | [P40] |
+| ISO 100-200 | ⚠️ Parcial — hay paper que fija ISO=25 | Media | [P40] |
+| **Gimbal** | ✅ **Sí, paper directo** — Gašparović & Jurjević | **Alta** | [P43] |
+| **Sensor Logger 100Hz** | ✅ **Sí, paper directo** — Fan et al. (2025) | **Alta** | [P25] |
+| **Gyroflow** | ✅ Sí — docs técnicas + GitHub + papers IMU | **Alta** | [P11], [P13], [D2] |
+| **Distancia 0.3-1.5m** | ✅ **Sí, paper compara distancias** — Kuznetsova et al. (2020) | **Alta** | [P28], [P37] |
+| Velocidad caminata | ⚠️ Reportado pero no comparado — OrangeYolo a 2m/s, Coffee a 3cm/s | Media | [P31], [P27] |
+| 4K 30fps | ⚠️ Inferencia — papers usan altas resoluciones pero no comparan | Media | [P28] |
 
 ### Gap confirmado para la tesis
 

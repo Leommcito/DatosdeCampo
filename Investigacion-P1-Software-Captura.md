@@ -24,7 +24,7 @@
 
 ### Papers de Semantic Scholar que complementan
 
-#### Paper 1: Medición de humedad en arroz con smartphone (Sensors, 2021)
+#### Paper 1: Medición de humedad en arroz con smartphone (Sensors, 2021) — [P55]
 
 - **Dispositivo:** iPhone 8
 - **Configuración:** ISO=25 fijo, shutter=1/400s, f/1.8, distancia=27.5cm
@@ -32,6 +32,7 @@
 - **Condiciones:** Sin luz solar directa. Usaron tabla de calibración de color (Spyder Checkr 24)
 - **Dato clave:** "To minimize lighting-related factors, the smartphone camera parameters were fixed" — justificación explícita de por qué fijar parámetros
 - **Relevancia:** Alta. Paper que demuestra la necesidad de fijar parámetros en campo.
+- **ID en Tabla Maestra:** [P55]
 - **Enlace:** PDF en resultados Semantic Scholar (rice GMC measurement)
 
 #### Paper 2: Monitoreo de café con smartphone + sensores inerciales (Sensors, 2020)
@@ -69,13 +70,116 @@
 - **Ángulo:** ~45° respecto a la superficie (simulando robot)
 - **Relevancia:** Media. Ángulo 45° y distancia cercana.
 
-#### Paper 6: Stabilization self-calibration esférica con giroscopio (Information, 2021)
+#### Paper 6: Stabilization self-calibration esférica con giroscopio (Information, 2021) — [P56]
 
 - **Método:** Estabilización basada en giroscopio + auto-calibración de radio esférico
 - **Resultados:** Mejora PSNR, SSIM, cropping ratio, distortion score, stability score
 - **Comparación:** Supera a métodos con matriz de parámetros intrínsecos
 - **Dato clave:** Método basado en giroscopio no necesita calibración de cámara
 - **Relevancia:** Alta. Respalda el uso de giroscopio para estabilización en vez de métodos ópticos.
+- **ID en Tabla Maestra:** [P56]
+
+---
+
+## Nueva evidencia encontrada — Búsqueda en Semantic Scholar (2025)
+
+Resultados de búsqueda específica para justificar el uso de controles manuales vs automático en captura agrícola.
+
+### Paper 7: LEDs + exposición fija (Computers and Electronics in Agriculture, 2021) — [P57] 🔴 Crítico
+
+| Hallazgo | Valor |
+|---|---|
+| **Reducción variación HSV** | **85% menos** con LED fijo vs auto-exposición |
+| **Error motion blur** | 7mm → **1mm** a 7km/h con flash sincronizado |
+| **Fallo de auto-exposición** | Catastrófico cuando el sol está frontal a la cámara |
+| **Conclusión** | Parámetros fijos + iluminación controlada eliminan casi toda la variabilidad |
+
+**Relevancia:** Respalda directamente fijar ISO y shutter speed en la captura.
+
+---
+
+### Paper 8: Phenotyping — Manual vs Auto (Plant Methods, 2018) — [P58] 🔴 Crítico
+
+| Hallazgo | Valor |
+|---|---|
+| **Error cuadrático medio** | **1.57 (manual) vs 4.26 (auto)** |
+| **Conclusión** | Exposición manual es **2.7x más consistente** que automática |
+
+**Relevancia:** Comparación directa manual vs auto en condiciones de campo. Respalda AE Lock.
+
+---
+
+### Paper 9: Illumination-Invariant Camera System (arXiv, 2021) — [P59] 🟠 Alta
+
+| Hallazgo | Valor |
+|---|---|
+| **Reducción datos necesarios** | Redes entrenadas con imágenes consistentes requieren **4x menos datos** |
+| **AP en luz extrema** | 0.71 (iluminación controlada) vs **casi 0** (luz natural) |
+| **Conclusión** | Consistencia en captura reduce drásticamente la cantidad de datos necesarios |
+
+**Relevancia:** Fijar parámetros = menos imágenes necesarias para entrenar.
+
+---
+
+### Paper 10: Stanford — CNN + Exposure Bias (Google Research, 2018) — [P60] 🟠 Alta
+
+| Hallazgo | Valor |
+|---|---|
+| **Caída de precisión CNN** | **~20%** cuando hay sesgo de exposición |
+| **Conclusión** | Exposición inconsistente degrada directamente la precisión de detección |
+
+**Relevancia:** Evidencia directa de que AE Lock mejora la detección.
+
+---
+
+### Paper 11: Focus Hunting (CVPR, 2025) — [P61] 🟠 Alta
+
+| Hallazgo | Valor |
+|---|---|
+| **Focus hunting** | El lente oscila repetitivamente creando inestabilidad en el video |
+| **Efectos** | Reduce nitidez, cambia el campo de visión (FoV) |
+| **Reducción** | 18% menos FH con método DRL propuesto |
+
+**Relevancia:** Documenta que el focus hunting es un problema real. Respalda AF Lock.
+
+---
+
+### Paper 12: Camera2 API para investigación (Nature/PMC, 2023) — [P62] 🟠 Alta
+
+| Hallazgo | Valor |
+|---|---|
+| **Tone mapping automático** | Aplica transformaciones **no lineales irreversibles** |
+| **Camera2 API** | Permite desactivar tone mapping, fijar WB y control manual total |
+| **Conclusión** | Camera2 API es necesaria para investigación científica con smartphone |
+
+**Relevancia:** Valida que Camera2 API es el estándar para captura científica. Respalda usar Open Camera.
+
+---
+
+### Paper 13: Kiwifruit Detection + Glare (arXiv, 2020) — [P63] 🟡 Media
+
+| Hallazgo | Valor |
+|---|---|
+| **F1-score sin glare** | **0.82** en imágenes normales |
+| **F1-score con glare** | **0.13** en imágenes con luz no controlada |
+| **Conclusión** | Luz no controlada destruye la detección |
+
+**Relevancia:** Demuestra que condiciones de luz adversas degradan severamente la detección.
+
+---
+
+### Tabla de evidencia cuantitativa — Paso 1
+
+| Problema | Evidencia | Fuente | ID |
+|---|---|---|---|
+| Auto-exposure causa inconsistencia | 85% más variación HSV | LEDs paper (2021) | [P57] |
+| Auto-exposure falla en alto rango dinámico | Primer plano oscuro al exponer para cielo | LEDs paper (2021) | [P57] |
+| Manual supera a auto | MSE 1.57 vs 4.26 | Phenotyping (2018) | [P58] |
+| Parámetros fijos reducen datos necesarios | 4x menos datos de entrenamiento | Illumination-Invariant (2021) | [P59] |
+| Exposición inconsistente degrada CNN | ~20% caída precisión | Stanford (2018) | [P60] |
+| Focus hunting degrada calidad | Lente oscila, FoV cambia | CVPR (2025) | [P61] |
+| Camera2 API necesario para control científico | Tone mapping irreversible en auto | Nature/PMC (2023) | [P62] |
+| Luz no controlada destruye detección | F1 0.82 → 0.13 con glare | Kiwifruit (2020) | [P63] |
 
 ---
 
@@ -146,4 +250,20 @@ Papers actuales:
 - No comparan **auto vs manual** con métricas de detección
 - No documentan **app de logging IMU** ni método de sincronización
 
-**Tu contribución original:** Documentar y justificar todo el pipeline de captura (app + configuración + IMU + procesamiento) con métricas cuantitativas de impacto en YOLO.
+### Nueva evidencia encontrada (2025)
+
+Ahora contamos con **7 papers nuevos** que respaldan el Paso 1:
+
+| ID | Evidencia | Lo que demuestra |
+|---|---|---|
+| [P57] | LEDs paper | 85% menos variación con exposición fija |
+| [P58] | Phenotyping | Manual 2.7x más consistente que auto |
+| [P59] | Illumination-Invariant | 4x menos datos con imágenes consistentes |
+| [P60] | Stanford CNN | ~20% caída precisión con exposición variable |
+| [P61] | CVPR 2025 | Focus hunting es un problema real |
+| [P62] | Camera2 API | Control manual necesario para investigación |
+| [P63] | Kiwifruit glare | F1 cae de 0.82 a 0.13 con luz no controlada |
+
+**Gap que persiste:** Ninguno de estos papers usa ni compara apps de cámara específicas (Open Camera, Filmic Pro) ni documenta el flujo completo app + IMU + procesamiento.
+
+**Tu contribución original:** Documentar y justificar todo el pipeline de captura (app + configuración + IMU + procesamiento) con métricas cuantitativas de impacto en YOLO.**

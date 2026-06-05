@@ -103,6 +103,37 @@
 - **[Entity 1]**: [What it represents, key attributes without implementation]
 - **[Entity 2]**: [What it represents, relationships to other entities]
 
+## Justificación Bibliográfica *(mandatory — Constitution Principle II)*
+
+<!--
+  Constitution Principle II (Trazabilidad Bibliográfica Integral) exige que
+  toda decisión documentada en la spec esté respaldada por al menos un paper
+  registrado en la Tabla Maestra con ID canónico [PXX].
+-->
+
+### Referencias por User Story
+
+| User Story | Decisión / Requisito | Paper ID | Justificación |
+|---|---|---|---|
+| US1 | [decisión o parámetro] | [PXX] | [breve explicación] |
+| US2 | [decisión o parámetro] | [PXX] | [breve explicación] |
+
+### Referencias por Requisito Funcional
+
+| FR | Descripción | Paper ID | Justificación |
+|---|---|---|---|
+| FR-001 | [descripción] | [PXX] | [breve explicación] |
+
+### Papers Nuevos (si aplica)
+
+Si esta spec requiere papers aún no registrados en la Tabla Maestra:
+
+| Título | Autores | Año | DOI | Importancia |
+|---|---|---|---|---|
+| [título] | [autores] | [año] | [DOI] | [🔴 Crítico / 🟠 Alta / 🟡 Media / 🟢 Baja] |
+
+---
+
 ## Success Criteria *(mandatory)*
 
 <!--

@@ -29,14 +29,14 @@
 
 ### 2.1 App de captura de video
 
-| Parámetro | Valor |
-|---|---|
-| **App** | Open Camera |
-| **Versión** | [Última disponible en Google Play] |
-| **Licencia** | GPLv3 (gratuita y open-source) |
-| **URL** | https://opencamera.sourceforge.io/ |
+| Parámetro | Valor | Ref. |
+|---|---|---|
+| **App** | Open Camera | [D1] |
+| **Versión** | [Última disponible en Google Play] | — |
+| **Licencia** | GPLv3 (gratuita y open-source) | — |
+| **URL** | https://opencamera.sourceforge.io/ | — |
 
-**Justificación:** Open Camera es la única app gratuita y open-source que permite el bloqueo simultáneo de autofoco (AF), exposición (AE) y balance de blancos (WB), junto con control manual de ISO, shutter speed y bitrate. Su naturaleza open-source garantiza reproducibilidad para otros investigadores.
+**Justificación:** Open Camera es la única app gratuita y open-source que permite el bloqueo simultáneo de autofoco (AF), exposición (AE) y balance de blancos (WB), junto con control manual de ISO, shutter speed y bitrate. Su naturaleza open-source garantiza reproducibilidad para otros investigadores. [D1], [P40], [P41]
 
 **Alternativas descartadas:**
 - **Filmic Pro** ($5/semana): Subscription costosa. Perfiles Log innecesarios para detección de objetos.
@@ -60,18 +60,18 @@
 
 ### 3.1 Parámetros de captura
 
-| Parámetro | Valor | Fundamento |
-|---|---|---|
-| **Resolución** | 4K (3840×2160) o 1080p (1920×1080) | 4K provee más píxeles por fruto pequeño. Si overheating, bajar a 1080p. |
-| **FPS** | 30 | Suficiente para tracking (ByteTrack, CoTracker3). 60fps duplica el dataset sin ganancia probada. |
-| **ISO** | 100-200 (lo más bajo posible con luz de día) | Minimiza ruido digital que YOLO puede confundir con textura de fruto. |
-| **Shutter speed** | 1/60s (regla 180°) o 1/120s (si hay motion blur) | Balance entre motion blur natural y nitidez de frame. |
-| **Autofocus (AF)** | LOCK — tocar la fruta más cercana para enfocar, luego lock | Evita focus hunting al caminar entre ramas. |
-| **Exposición (AE)** | LOCK | Evita cambios de exposición al pasar por sombra/sol. |
-| **White balance (WB)** | Daylight (~5200K) o Cloudy (~6500K) | Evita cambios de color cielo/nube/sombra. |
-| **Bitrate** | 50 Mbps (máximo que el dispositivo soporte estable) | Calidad constante en todo el video. |
-| **Codec** | H.264 | Compatibilidad universal con herramientas de post-procesamiento. |
-| **Camera2 API** | ON (obligatorio) | Desbloquea controles manuales. |
+| Parámetro | Valor | Fundamento | Ref. |
+|---|---|---|---|
+| **Resolución** | 4K (3840×2160) o 1080p (1920×1080) | 4K provee más píxeles por fruto pequeño. Si overheating, bajar a 1080p. | [P28] |
+| **FPS** | 30 | Suficiente para tracking (ByteTrack, CoTracker3). 60fps duplica el dataset sin ganancia probada. | — |
+| **ISO** | 100-200 (lo más bajo posible con luz de día) | Minimiza ruido digital que YOLO puede confundir con textura de fruto. | [P40], [D1] |
+| **Shutter speed** | 1/60s (regla 180°) o 1/120s (si hay motion blur) | Balance entre motion blur natural y nitidez de frame. | [P40], [D1] |
+| **Autofocus (AF)** | LOCK — tocar la fruta más cercana para enfocar, luego lock | Evita focus hunting al caminar entre ramas. | [D1], [P40] |
+| **Exposición (AE)** | LOCK | Evita cambios de exposición al pasar por sombra/sol. | [D1], [P40], [P41] |
+| **White balance (WB)** | Daylight (~5200K) o Cloudy (~6500K) | Evita cambios de color cielo/nube/sombra. | [D1] |
+| **Bitrate** | 50 Mbps (máximo que el dispositivo soporte estable) | Calidad constante en todo el video. | [D1] |
+| **Codec** | H.264 | Compatibilidad universal con herramientas de post-procesamiento. | — |
+| **Camera2 API** | ON (obligatorio) | Desbloquea controles manuales. | [D1] |
 
 ### 3.2 Procedimiento de configuración en Open Camera
 
@@ -93,14 +93,14 @@
 
 ## 4. Configuración de IMU
 
-| Parámetro | Valor |
-|---|---|
-| **Sensores activados** | Giroscopio (Rotation Rate) + Acelerómetro (Device Acceleration) |
-| **Frecuencia de muestreo** | 100 Hz |
-| **Formato de exportación** | CSV (Zipped CSV) |
-| **Modo de grabación** | Background |
+| Parámetro | Valor | Ref. |
+|---|---|---|
+| **Sensores activados** | Giroscopio (Rotation Rate) + Acelerómetro (Device Acceleration) | — |
+| **Frecuencia de muestreo** | 100 Hz | [P25] |
+| **Formato de exportación** | CSV (Zipped CSV) | — |
+| **Modo de grabación** | Background | — |
 
-**Fundamento de frecuencia:** Fan et al. (2025) — Sensors MDPI — demostró que **100 Hz es suficiente** para capturar la firma de movimiento humano al caminar a 1.2 m/s. Frecuencias mayores no mejoran precisión y el acelerómetro >100 Hz incluso la degrada.
+**Fundamento de frecuencia:** Fan et al. (2025) — Sensors MDPI — demostró que **100 Hz es suficiente** para capturar la firma de movimiento humano al caminar a 1.2 m/s. Frecuencias mayores no mejoran precisión y el acelerómetro >100 Hz incluso la degrada. **[Ref: P25]**
 
 ### ⚠️ Importante: Evitar que Android mate Sensor Logger en background
 
@@ -233,15 +233,15 @@ Esto genera **1 archivo CSV por video**. El nombre del CSV incluye la fecha y ho
 
 ### 6.6 Parámetros de captura resumidos
 
-| Parámetro | Valor | Fundamento |
-|---|---|---|
-| **Lado de la hilera** | Un solo lado por grabación. Para cubrir ambos lados, hacer dos grabaciones separadas. | Evita mezclar perspectivas. |
-| **Distancia al dosel** | 0.5-1.5 m | Kuznetsova et al. (2020) comparó 0.2, 0.5, 1.0, 2.0m. Rango óptimo. |
-| **Ángulo de cámara** | 0-30° hacia arriba | Práctica documentada en papers de detección de frutos. |
-| **Velocidad de caminata** | ~0.5-1 m/s | Basado en OrangeYolo (2 m/s en rover) y Coffee monitoring (3 cm/s en rama). Rango intermedio para captura manual. |
-| **Duración por grabación** | 3-5 minutos continuos | Suficiente para cubrir una hilera. |
-| **Trayectoria** | Una hilera por grabación | Evita mezclar condiciones entre hileras. |
-| **Horario** | 8:30 AM en adelante | Cocoa dataset (2023) capturó 8:00-16:00. Evitar sol cenital (12:00-14:00). |
+| Parámetro | Valor | Fundamento | Ref. |
+|---|---|---|---|---|
+| **Lado de la hilera** | Un solo lado por grabación. Para cubrir ambos lados, hacer dos grabaciones separadas. | Evita mezclar perspectivas. | — |
+| **Distancia al dosel** | 0.5-1.5 m | Kuznetsova et al. (2020) comparó 0.2, 0.5, 1.0, 2.0m. Rango óptimo. | [P28], [P37] |
+| **Ángulo de cámara** | 0-30° hacia arriba | Práctica documentada en papers de detección de frutos. | [P45], [P39] |
+| **Velocidad de caminata** | ~0.5-1 m/s | Basado en OrangeYolo (2 m/s en rover) y Coffee monitoring (3 cm/s en rama). Rango intermedio para captura manual. | [P31], [P27] |
+| **Duración por grabación** | 3-5 minutos continuos | Suficiente para cubrir una hilera. | — |
+| **Trayectoria** | Una hilera por grabación | Evita mezclar condiciones entre hileras. | — |
+| **Horario** | 8:30 AM en adelante | Cocoa dataset (2023) capturó 8:00-16:00. Evitar sol cenital (12:00-14:00). | [P30] |
 
 ---
 
@@ -385,45 +385,67 @@ Para que otro investigador reproduzca exactamente este experimento, necesita:
 
 ## 12. Metodologías similares encontradas en la literatura
 
-| Referencia | Cultivo | Dispositivo | Protocolo | Datos reportados |
-|---|---|---|---|---|
-| **Coffee cherry counting (2024)** — YOLOv8 con farmers locales | Café | Smartphones varios (Xiaomi, Samsung, Motorola) | **3 ramas/árbol** (superior, media, inferior). Fotos entre 6AM-6PM. Sin sol directo en lente. Sin mover cámara post-captura. Res: 768×768 a 1024×1024. | 2,968 árboles, 8,904 fotos. Anotación PASCAL VOC. División dataset no especifica. |
-| **OrangeYolo (2024)** — Rover + DJI Osmo Action | Naranjas | DJI Osmo Action (1920×1080, 60fps) | Rover a **2 m/s uniforme**. Cámara **perpendicular a la hilera**. Distancia constante. 145° FOV. | 1,465 muestras. División 7:3 train/test. |
-| **Strawberry longitudinal (2020)** — 3 cámaras a 45° | Fresas | 3 cámaras RGB, plataforma robótica Thorvald | **3 veces al día, 3 veces por semana**, 2 meses. Cámaras a **45°** entre sí. Markers visuales para consistencia. 1920×1080. | 6,189 imágenes, 150 anotadas manualmente. Incluye datos de clima y temperatura. |
-| **Pear dataset (2023)** — Trípode + UAV | Peras | Kodak AZ651 (trípode) + DJI Phantom 4 (UAV) | **4 horarios**: 7-8AM, 10-11AM, 2-3PM, 6-7PM. Ángulo 20°-80°. Velocidad UAV **1 m/s** para evitar blur. Res: 1280×720. | 7,541 imágenes → 3,680 (ORB para eliminar similares). División 80/10/10. |
-| **Cocoa dataset (2023)** — 5 smartphones | Cacao | Samsung Galaxy, iPhone SE, Motorola, LG | **8AM-4PM**. Trayectoria **zigzag**. 1-4 fotos/ángulo por fruto. Aspect ratio **1:1**. Resize a 3000×3000. | 4,116 imágenes, 7,917 instancias. Anotación CVAT. Formato COCO + segmentation mask. |
-| **Strawberry phenotyping (2022)** — QR marker | Fresas | iPhone 6S Plus, Galaxy S8 | **6AM-6PM**. Cámara **perpendicular** al objetivo con **QR code** como referencia de calibración espacial. Exposure en **AUTO**, AF en **AUTO**. | 70 plantas, 6 fenotipos. Uso de QR para corrección de distorsión. |
-| **Apple YOLOv3 (2020)** — Nikon D3500 | Manzanas | Nikon D3500 + lente 18-140mm | **Comparó 4 distancias**: 0.2, 0.5, 1.0, 2.0m. **4 condiciones de luz**: front, side, back, scattered. Varias resoluciones (3888×5184 a 4032×3024). | 878 imágenes, 5,142 manzanas. Distancia óptima: k=3 para far-view. |
-| **Apple recognition (2023)** — 4 períodos | Manzanas | Cámara CCD | **4 períodos**: mañana, mediodía, tarde, noche. **Iluminaciones**: front, side, back, artificial. **Ángulo y distancia variables**. Res: 4032×3024. | 2,200 frames → 4,000 con aumentación. LabelImg. Formato Pascal VOC. |
+| Referencia | Cultivo | Dispositivo | Protocolo | Datos reportados | Ref. |
+|---|---|---|---|---|---|---|
+| **Coffee cherry counting (2024)** — YOLOv8 con farmers locales | Café | Smartphones varios (Xiaomi, Samsung, Motorola) | **3 ramas/árbol** (superior, media, inferior). Fotos entre 6AM-6PM. Sin sol directo en lente. Sin mover cámara post-captura. Res: 768×768 a 1024×1024. | 2,968 árboles, 8,904 fotos. Anotación PASCAL VOC. División dataset no especifica. | [P36] |
+| **OrangeYolo (2024)** — Rover + DJI Osmo Action | Naranjas | DJI Osmo Action (1920×1080, 60fps) | Rover a **2 m/s uniforme**. Cámara **perpendicular a la hilera**. Distancia constante. 145° FOV. | 1,465 muestras. División 7:3 train/test. | [P31] |
+| **Strawberry longitudinal (2020)** — 3 cámaras a 45° | Fresas | 3 cámaras RGB, plataforma robótica Thorvald | **3 veces al día, 3 veces por semana**, 2 meses. Cámaras a **45°** entre sí. Markers visuales para consistencia. 1920×1080. | 6,189 imágenes, 150 anotadas manualmente. Incluye datos de clima y temperatura. | [P32] |
+| **Pear dataset (2023)** — Trípode + UAV | Peras | Kodak AZ651 (trípode) + DJI Phantom 4 (UAV) | **4 horarios**: 7-8AM, 10-11AM, 2-3PM, 6-7PM. Ángulo 20°-80°. Velocidad UAV **1 m/s** para evitar blur. Res: 1280×720. | 7,541 imágenes → 3,680 (ORB para eliminar similares). División 80/10/10. | [P29] |
+| **Cocoa dataset (2023)** — 5 smartphones | Cacao | Samsung Galaxy, iPhone SE, Motorola, LG | **8AM-4PM**. Trayectoria **zigzag**. 1-4 fotos/ángulo por fruto. Aspect ratio **1:1**. Resize a 3000×3000. | 4,116 imágenes, 7,917 instancias. Anotación CVAT. Formato COCO + segmentation mask. | [P30] |
+| **Strawberry phenotyping (2022)** — QR marker | Fresas | iPhone 6S Plus, Galaxy S8 | **6AM-6PM**. Cámara **perpendicular** al objetivo con **QR code** como referencia de calibración espacial. Exposure en **AUTO**, AF en **AUTO**. | 70 plantas, 6 fenotipos. Uso de QR para corrección de distorsión. | — |
+| **Apple YOLOv3 (2020)** — Nikon D3500 | Manzanas | Nikon D3500 + lente 18-140mm | **Comparó 4 distancias**: 0.2, 0.5, 1.0, 2.0m. **4 condiciones de luz**: front, side, back, scattered. Varias resoluciones (3888×5184 a 4032×3024). | 878 imágenes, 5,142 manzanas. Distancia óptima: k=3 para far-view. | [P28] |
+| **Apple recognition (2023)** — 4 períodos | Manzanas | Cámara CCD | **4 períodos**: mañana, mediodía, tarde, noche. **Iluminaciones**: front, side, back, artificial. **Ángulo y distancia variables**. Res: 4032×3024. | 2,200 frames → 4,000 con aumentación. LabelImg. Formato Pascal VOC. | — |
+| **Apple photogrammetry (2021)** — Smartphone video + Mask R-CNN | Manzanas | Smartphone (Samsung S10) | Video desde múltiples posiciones/ángulos. Keyframes cada ~50s. Segmentación Mask R-CNN + esfera fitting. Sin gimbal ni bloqueo de parámetros. | ~120 keyframes por video. Comparación K-means vs Mask R-CNN. | [P46] |
+| **FruitSize app (2018)** — Control calidad integrado | Varios (mandarina, naranja, manzana) | HTC Desire 820, Samsung Galaxy S6 | **Distancia 120-300mm, ángulo <14°.** Blue backboard + círculo amarillo. App rechaza imágenes fuera de especificación. Segmentación Otsu en CIE L*a*b*. | RMSE 2.0-5.5mm según cultivo. ~240 frutos/hora. | [P47] |
+| **Kiwifruit row counting (2025)** — Gimbal + palo extensible | Kiwi | Smartphone + estabilizador + palo | **Smartphone montado en estabilizador con palo extensible.** Vista hacia arriba. Hilera completa. YOLOv8m + ByteTrack + TCV para eliminar sobreconteo. | R² = 0.9791. YOLOv8m AP 0.878. TCV mejora precisión 40%→94%. | [P51] |
+| **Kiwifruit tractor (2020)** — Minitractor + gimbal | Kiwi | Cámara montada en minitractor + gimbal | **Velocidad ~2 km/h.** Cámara hacia arriba. 3 fps. GPS cada 5 segundos. Background suppression en LAB. Detección por bottom-tip. | Error 6-15% según huerto. Uso comercial por 2 años. | [P53] |
+| **Pear YOLOv4+DeepSORT (2021)** — Dos dispositivos | Pera | DJI Osmo Pocket + móvil 16MP | **Video desde abajo del árbol.** Móvil 1920×1080 30fps. Osmo 4K 60fps. Día nublado. Data splitting 70:10:10:10. YOLOv4 + Deep SORT. | Deep SORT 25-50fps en GPU. Comparación ROI vs unique ID counting. | [P54] |
+| **Proximal sensing vineyard (2023)** — 8 años experiencia | Uva | Basler Ace industrial + flash xenon | **Exposición 250µs, obturador global.** Flash sincronizado. App Android control remoto vía Wi-Fi. GNSS de alta precisión. Distancia ~1m. | 8 años de desarrollo metodológico. Flash elimina variación de luz. | [P49] |
+| **Kiwifruit app (2020)** — KiwiDetector + selfie stick | Kiwi | Huawei P20 + selfie stick | **Selfie stick a ~1m bajo dosel.** Cámara hacia arriba. App KiwiDetector propia. SSD + MobileNetV2 cuantizado. 8-bit quantization. | 89.7% detección. Modelo 4.5MB. 103ms/image en dispositivo. | [P48] |
+| **Apple flower detection (2022)** — Azure Kinect RGB-D | Manzana | Microsoft Azure Kinect DK | Trípode + vehículo móvil. Ambos lados del árbol (este y oeste). RGB-D + giroscopio + acelerómetros integrados. YOLOv4 + IOU tracker. | Dataset con 3 viajes a campo. Detección de flores vs frutos. | [P50] |
+| **Fruit Harvest Helper (2024)** — Cross-platform app | Manzana | Samsung Galaxy Tab S7 (13MP) | **Distancia ~2.5m.** Fotos este y oeste por árbol. Sin filtros ni configuración. App cross-platform. Segmentación por color ratio. | 73 imágenes, 40 árboles. MAPE 8.52%. Pearson 0.6. | [P52] |
 
 ### Lecciones aprendidas para tu protocolo
 
 | Aspecto | Lo que hacen los papers | Lo que hacemos nosotros |
-|---|---|---|
-| **Horario** | 6AM-6PM / 8AM-4PM. Evitan sol cenital (12-2PM). | ✅ 8:30AM en adelante. Evitar 12-14PM. |
-| **Distancia** | 0.2-2.0m (Kuznetsova compara 4 distancias). 50-80cm (fresas). | ✅ 0.5-1.5m rango respaldado. |
-| **Velocidad** | 2 m/s rover (OrangeYolo). 1 m/s UAV (peras). 3 cm/s rama (café). | ⚠️ Nuestra velocidad 0.5-1 m/s es conservadora pero razonable. |
-| **Ángulo** | 20°-80° (peras). 45° (fresas). Perpendicular (naranjas). | ✅ 0-30°. Consistente, aunque podríamos considerar más variedad. |
-| **Múltiples dispositivos** | Cocoa usa 5 smartphones distintos. Sweet cherry usa 3. | ❌ Nosotros usamos 1 solo dispositivo. Limita generalización del dataset. |
-| **Condiciones de luz** | Todos capturan en múltiples condiciones (soleado, nublado, varios horarios). | ✅ Planeado. |
-| **Nivel de detalle metodológico** | **Ninguno** reporta app de cámara, ni ISO, ni shutter, ni AF lock. | **Este es nuestro gap y nuestra contribución.** |
+|---|---|---|---|
+| **Horario** | 6AM-6PM / 8AM-4PM. Evitan sol cenital (12-2PM). Apple flower detecta en 3 viajes separados. | ✅ 8:30AM en adelante. Evitar 12-14PM. |
+| **Distancia** | 0.2-2.0m (Kuznetsova). 12-30cm (Wang FruitSize con backboard). 1-1.5m (fotogrametría). 2.5m (Fruit Harvest Helper). ~1m (kiwifruit row con palo). | ✅ 0.5-1.5m rango respaldado. |
+| **Velocidad** | 2 m/s rover (OrangeYolo). 1 m/s UAV (peras). **3 cm/s rama (Coffee 2017).** ~2 km/h tractor (kiwifruit 2020). | ⚠️ Nuestra velocidad 0.5-1 m/s es intermedia y razonable. |
+| **Ángulo** | 20°-80° (peras). 45° (fresas). Perpendicular (naranjas). **Hacia arriba** (kiwifruit, pear). **<14°** (Wang FruitSize). | ✅ 0-30°. Consistente. |
+| **Estabilización** | Mayoría usa **mano libre**. Algunos: gimbal (kiwifruit row 2025, tractor 2020), selfie stick (kiwi 2020), vehículo (OrangeYolo). | ✅ **Gimbal** + Gyroflow. Superior a la mayoría. |
+| **IMU sincronizado** | Solo 1 paper (Coffee 2017 — giroscopio para detección de movimiento). Azure Kinect (flower 2022) tiene IMU integrado pero no sincronizado con video. | ✅ **IMU a 100 Hz + video sincronizado**. Solo 1 paper comparable. |
+| **App específica** | Apps propias: KiwiDetector, FruitSize, Fruit Harvest Helper. **Ninguno usa Open Camera ni bloquea parámetros.** | ✅ **Open Camera con AF/AE/WB Lock**. Único en la literatura. |
+| **Control de calidad** | Wang (FruitSize) rechaza imágenes fuera de distancia/ángulo. Coffee monitorea blur con IMU. | ✅ Bloqueo preventivo de parámetros + verificación pre-captura. |
+| **Iluminación controlada** | Rançon (vineyard 2023) usa flash xenon + obturador 250µs. Los demás usan luz natural sin control. | ⚠️ Luz natural. Podríamos considerar diffusor o flash. |
+| **Múltiples dispositivos** | Cocoa usa 5 smartphones. Pear 2021 usa 2 (Osmo Pocket + móvil). Sweet cherry usa 3. | ❌ Nosotros usamos 1. Limita generalización. |
+| **Nivel de detalle metodológico** | **Ninguno** reporta app de cámara, ni ISO, ni shutter, ni AF lock. Wang (FruitSize) es el único con control de calidad en app. | ✅ **Este es nuestro gap y nuestra contribución.** |
 
 ---
 
-## 13. Referencias
+## ## 13. Referencias
 
-- Fan, B. et al. (2025). "Influence of Sampling Rate on Wearable IMU Orientation Estimation Accuracy for Human Movement Analysis". *Sensors*, 25(7), 1976.
-- Kuznetsova, A. et al. (2020). "Using YOLOv3 Algorithm with Pre- and Post-Processing for Apple Detection in Fruit-Harvesting Robot". *Agronomy*, 10(7), 1016.
-- Gašparović, M. & Jurjević, L. "Gimbal Influence on the Stability of Exterior Orientation Parameters of UAV Acquired Images". *Sensors*.
-- Choi, K.T.H. (2024). "Sensor Logger: A Framework for Smartphone-based Sensor Data Collection". *CEUR Workshop Proceedings*.
-- Li, C. et al. (2025). "Towards Visual-Inertial Integration: Multi-Modal Collaboration-based Video Stabilization". *IEEE ICDCS 2025*.
-- Zhang, K. & Zhang, M. (2023). "Point feature correction based rolling shutter modeling for EKF-based visual-inertial odometry". *Measurement Science and Technology*.
-- Restrepo-Arias, J.F. et al. (2023). "RipSetCocoaCNCH12: Labeled Dataset for Ripeness Stage Detection of Cocoa Pods". *Data*, 8(7), 112.
-- Han, F. et al. (2021). "Video Stabilization for Camera Shoot in Mobile Devices via Inertial-Visual State Tracking". *IEEE Transactions on Mobile Computing*.
-- OrangeYolo — [Citrus counting with OrangeSort and OrangeYolo]. *Computers and Electronics in Agriculture*.
-- Coffee cherry YOLOv8 — Sampling protocol for coffee cherry counting with smartphones. *Precision Agriculture*.
-- Strawberry longitudinal dataset — Kirk et al. "LabFruits Dataset". *University of Lincoln*.
-- Pear dataset — YOLOv5s-FP for pear detection. *Computers and Electronics in Agriculture*.
-- Open Camera Documentation. https://opencamera.sourceforge.io/help.html
-- Gyroflow Documentation. https://docs.gyroflow.xyz/
-- Sensor Logger. https://www.tszheichoi.com/sensorlogger
+- **[P25]** Fan, B. et al. (2025). "Influence of Sampling Rate on Wearable IMU Orientation Estimation Accuracy for Human Movement Analysis". *Sensors*, 25(7), 1976.
+- **[P28]** Kuznetsova, A. et al. (2020). "Using YOLOv3 Algorithm with Pre- and Post-Processing for Apple Detection in Fruit-Harvesting Robot". *Agronomy*, 10(7), 1016.
+- **[P43]** Gašparović, M. & Jurjević, L. "Gimbal Influence on the Stability of Exterior Orientation Parameters of UAV Acquired Images". *Sensors*.
+- **[P23]** Choi, K.T.H. (2024). "Sensor Logger: A Framework for Smartphone-based Sensor Data Collection". *CEUR Workshop Proceedings*.
+- **[P13]** Li, C. et al. (2025). "Towards Visual-Inertial Integration: Multi-Modal Collaboration-based Video Stabilization". *IEEE ICDCS 2025*.
+- **[P18]** Zhang, K. & Zhang, M. (2023). "Point feature correction based rolling shutter modeling for EKF-based visual-inertial odometry". *Measurement Science and Technology*.
+- **[P30]** Restrepo-Arias, J.F. et al. (2023). "RipSetCocoaCNCH12: Labeled Dataset for Ripeness Stage Detection of Cocoa Pods". *Data*, 8(7), 112.
+- **[P11]** Han, F. et al. (2021). "Video Stabilization for Camera Shoot in Mobile Devices via Inertial-Visual State Tracking". *IEEE Transactions on Mobile Computing*.
+- **[P31]** OrangeYolo — [Citrus counting with OrangeSort and OrangeYolo]. *Computers and Electronics in Agriculture*.
+- **[P36]** Coffee cherry YOLOv8 — Sampling protocol for coffee cherry counting with smartphones. *Precision Agriculture*.
+- **[P32]** Strawberry longitudinal dataset — Kirk et al. "LabFruits Dataset". *University of Lincoln*.
+- **[P29]** Pear dataset — YOLOv5s-FP for pear detection. *Computers and Electronics in Agriculture*.
+- **[P46]** Grilli, E.; Battisti, R.; Remondino, F. (2021). "An Advanced Photogrammetric Solution to Measure Apples Using Smartphone-Based Videos". *Remote Sensing*, 13(19), 3960.
+- **[P47]** Wang, Z.; Koirala, A.; Walsh, K.; Anderson, N.; Verma, B. (2018). "In Field Fruit Sizing Using A Smart Phone Application". *Sensors*, 18(10), 3331.
+- **[P48]** Zhou, Z.; Song, Z.; Fu, L.; et al. (2020). "Real-time kiwifruit detection in orchard using deep learning on Android smartphones for yield estimation". *Scientia Horticulturae*.
+- **[P49]** Rançon, F.; Keresztes, B.; Deshayes, A.; et al. (2023). "Designing a Proximal Sensing Camera Acquisition System for Vineyard Applications: 8 Years of Experiments". *Sensors*, 23(2), 847.
+- **[P50]** (2022). "Smart Agriculture: A Fruit Flower Cluster Detection Strategy in Apple Orchards Using Machine Vision and Learning". *Applied Sciences*, 12(22), 11420.
+- **[P51]** Zhang, J. et al. (2025). "Row-based kiwifruit counting pipeline for smartphone-captured videos using fruit tracking and detection region adaptation". *Computers and Electronics in Agriculture*.
+- **[P52]** (2024). "Development of a Cross-Platform Mobile Application for Fruit Yield Estimation". *AgriEngineering*, 6(2).
+- **[P53]** (2020). "Vision System for Automatic On-Tree Kiwifruit Counting and Yield Estimation". *Sensors*, 20(15), 4214.
+- **[P54]** Parico, A.I.B.; Ahamed, T. (2021). "Real Time Pear Fruit Detection and Counting Using YOLOv4 Models and Deep SORT". *Sensors*, 21(14), 4803.
+- **[D1]** Open Camera Documentation. https://opencamera.sourceforge.io/help.html
+- **[D2]** Gyroflow Documentation. https://docs.gyroflow.xyz/
+- **[D3]** Sensor Logger. https://www.tszheichoi.com/sensorlogger

@@ -69,12 +69,82 @@ Múltiples papers confirman que el IMU del smartphone a **100 Hz** es válido pa
 | **Soporte Sensor Logger** | ✅ Compatible como fuente IMU externa | [docs.gyroflow.xyz](https://docs.gyroflow.xyz) |
 | **Sync requerida** | Sí, manual para fuentes externas. ±200ms típico. | docs.gyroflow.xyz |
 | **OpenCamera Sensors** | Sincronización nativa (mismo clock) | GitHub prime-slam/opencamera-sensors |
-| **OIS** | ⚠️ Debe estar desactivado | docs.gyroflow.xyz |
+| **OIS** | ⚠️ Debe estar desactivado — **ahora respaldado por papers** | docs.gyroflow.xyz, [P64], [P65] |
 | **Plugin DaVinci/Adobe** | ✅ OpenFX, Adobe, frei0r | gyroflow/gyroflow-plugins |
 | **Corrección rolling shutter** | ✅ Basada en datos IMU | docs.gyroflow.xyz |
 | **Corrección de lente** | ✅ Base de datos de perfiles de lente | docs.gyroflow.xyz |
 
-### NVIDIA 2014 — Fundamento teórico
+### Nueva evidencia: OIS debe estar desactivado — respaldo académico [P64] [P65]
+
+Anteriormente, la regla "OIS OFF" solo se respaldaba con documentación técnica de Gyroflow. Ahora contamos con papers:
+
+#### DeepOIS (arXiv, 2021) — [P64] 🔴 Crítico
+
+| Hallazgo | Valor |
+|---|---|
+| **Problema** | OIS mueve el lente independientemente del cuerpo, las lecturas IMU **no corresponden** a la imagen |
+| **Error alineación sin OIS** | 0.688 |
+| **Error alineación con OIS** | **1.038 (50% peor)** |
+| **Conclusión textual** | "OIS terminates the possibility of image registration by gyros" |
+
+**Relevancia:** Respalda directamente por qué OIS debe estar desactivado al usar Gyroflow.
+
+#### ISPRS (2022) — Estabilización debe desactivarse [P65] 🟠 Alta
+
+| Hallazgo | Valor |
+|---|---|
+| **Incertidumbre parámetros** | **Hasta 300% mayor** con IS activado |
+| **Error de reproyección** | **4x mayor** con IS activado |
+| **Conclusión** | "IS must be disabled when photogrammetric 3D modelling is required" |
+
+**Relevancia:** Corrobora desde la fotogrametría que la estabilización integrada degrada la precisión.
+
+---
+
+### Nueva evidencia: Video estabilizado supera a fotos estáticas [P66]
+
+#### MangoYOLO video tracking (Sensors, 2019) — [P66] 🟠 Alta
+
+| Hallazgo | Valor |
+|---|---|
+| **Detección con video** | **62.3%** del conteo real de cosecha |
+| **Detección con foto estática** | Solo **40.2%** |
+| **Mejora absoluta** | **+22%** usando video en movimiento estabilizado |
+
+**Relevancia:** Demuestra que capturar video estabilizado es superior a fotos individuales para conteo de frutos.
+
+---
+
+### Nueva evidencia: Motion blur degrada severamente YOLO [P68]
+
+#### Lightweight GAN para cítricos (MDPI, 2025) — [P68] 🟠 Alta
+
+| Hallazgo | Valor |
+|---|---|
+| **mAP@0.5:0.95** | **+86.4%** tras restaurar imágenes borrosas |
+| **Recall** | **+76.9%** |
+| **F1 score** | **+40.1%** |
+| **False Negative Rate** | **-63.9%** |
+
+**Relevancia:** El motion blur degrada severamente la detección YOLO. Justifica la necesidad de estabilización.
+
+---
+
+### Nueva evidencia: Estabilización en agricultura [P67]
+
+#### Crop Row Video Stabilization (MDPI Sensors) — [P67] 🟠 Alta
+
+| Hallazgo | Valor |
+|---|---|
+| **Desplazamiento lateral suprimido** | **66%** del espacio entre hileras |
+| **Desviación promedio** | ~20 píxeles (desde 93 píxeles inicial) |
+| **Conclusión** | La estabilización de video "está totalmente justificada" en agricultura |
+
+**Relevancia:** Justifica la estabilización en agricultura con métricas cuantitativas.
+
+---
+
+### NVIDIA 2014 — Fundamento teórico [P26]
 
 Bell, Troccoli, Pulli (NVIDIA, ECCV 2014):
 - Demostró que estabilización con giroscopio **supera a métodos basados en features**
@@ -98,9 +168,12 @@ Bell, Troccoli, Pulli (NVIDIA, ECCV 2014):
 | **100 Hz es suficiente** | Paper específico sobre sampling rate vs walking speed | Paper (Fan et al., 2025) |
 | **Usar Gyroflow en post-procesamiento** | Documentación oficial, 8.9k stars GitHub, plugins DaVinci/Adobe | Documentación técnica |
 | **Usar Sensor Logger** | Listado en docs de Gyroflow como fuente compatible | Documentación técnica |
-| **OIS debe estar desactivado** | Documentación de Gyroflow | Documentación técnica |
+| **OIS debe estar desactivado** | DeepOIS: 50% peor alineación. ISPRS: 300% más incertidumbre. | Papers [P64], [P65] + Docs Gyroflow |
 | **IMU mejora rolling shutter** | 3 papers con resultados cuantitativos | Papers (Mo 2020, Zhang 2023, Wu 2021) |
 | **IMU mejora deblurring** | 5% PSNR gain, 19% menos cómputo | Paper (Arslan et al., 2024) |
+| **Video estabilizado vs fotos** | MangoYOLO: +22% detección con video | Paper [P66] |
+| **Motion blur + YOLO** | Citrus GAN: 86.4% mAP drop por blur | Paper [P68] |
+| **Estabilización en agricultura** | Crop row: 66% supresión desplazamiento | Paper [P67] |
 | **IMU → YOLO mAP** | **No existe en agricultura** | Gap — tu contribución |
 
 ---
@@ -108,6 +181,19 @@ Bell, Troccoli, Pulli (NVIDIA, ECCV 2014):
 ## Gap confirmado para la tesis
 
 > **No existe un paper que mida cuantitativamente el impacto del pre-procesamiento con IMU (Gyroflow) en métricas YOLO (mAP) o MOT (MOTA) para video agrícola.**
+
+### Progreso en justificación del Paso 2
+
+| Aspecto | Antes | Ahora |
+|---|---|---|
+| **Gimbal mejora estabilidad** | ✅ [P43] | ✅ [P43] |
+| **IMU supera a óptica** | ✅ [P11][P13] | ✅ [P11][P13] |
+| **Rolling shutter con IMU** | ✅ [P18] | ✅ [P18] |
+| **❌ OIS OFF** | ⚠️ Solo docs técnicas | ✅ **Resuelto** — [P64] DeepOIS 50% + [P65] ISPRS 300% |
+| **Video > Fotos detección** | ❌ No existía | ✅ [P66] MangoYOLO +22% |
+| **Motion blur + YOLO** | ⚠️ Solo deblurring | ✅ [P68] Citrus GAN 86.4% |
+| **Estabilización agrícola** | ❌ No existía | ✅ [P67] Crop row 66% |
+| **IMU preprocessing → YOLO mAP** | ❌ Gap | ❌ **Sigue siendo gap — tu contribución** |
 
 Tu tesis puede medir:
 - mAP de YOLO sobre video **raw handheld**

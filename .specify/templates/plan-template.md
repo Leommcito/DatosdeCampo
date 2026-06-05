@@ -40,7 +40,22 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+### Trazabilidad Bibliográfica (Principio II)
+- [ ] Cada decisión técnica en el plan tiene al menos un paper ID `[PXX]` que la respalda
+- [ ] Todos los papers citados existen en la Tabla Maestra con metadatos completos
+- [ ] Los IDs usan formato `[PXX]` consistente con la Tabla Maestra
+
+### Investigación Basada en Evidencia (Principio I)
+- [ ] No hay decisiones "por sentido común" sin respaldo bibliográfico
+- [ ] Si hay decisiones experimentales, están marcadas como `[Decisión experimental — sin respaldo directo]`
+
+### Reproducibilidad (Principio III)
+- [ ] Todos los parámetros técnicos están explícitamente declarados
+- [ ] Las configuraciones son específicas, no genéricas ("configuración óptima" → valores concretos)
+
+### Stack Tecnológico
+- [ ] Las herramientas seleccionadas están justificadas con referencias
+- [ ] Las alternativas descartadas tienen razón documentada
 
 ## Project Structure
 
