@@ -110,6 +110,11 @@
 | **P87** | Citrus Orchard Mapping in Juybar, Iran: Analysis of NDVI Time Series and Feature Fusion of Multi-Source Satellite Imageries | Toosi, A. et al. | 2022 | *GIScience & Remote Sensing* | **Clasificó huertos de cítricos** con Sentinel-2 usando series temporales NDVI + machine learning. **Precisión 99.7%** (SVM). Propuso EGI (Evergreenness Index). | P4 — Demuestra que **Sentinel-2 distingue huertos de cítricos de otros cultivos** a nivel de parcela. | 🟡 Media | P4 — Clasificación de parcelas de cítricos con Sentinel-2 | Investigacion-P4 | 10.1016/j.rsase.2022.100760 |
 | **P88** | Multilevel Systematic Sampling to Estimate Total Fruit Number | Wulfsohn, D.; Aravena, F.; Potin, C.; Zamora, I.; García-Fiñana, M. | 2012 | *Precision Agriculture* | **SUR sistemático** en 14 huertos comerciales (kiwi, manzana, uva). Error **<5% en 6 huertos**, **5-10% en 5 huertos**, 13-20% en 3. Carga de trabajo 30-150 min. | P4 — Respalda el **muestreo sistemático uniforme (SUR)** para seleccionar hileras/árboles. Error <10% en 11/14 casos. | 🔴 Crítico | P4 — Selección de hileras (SUR sistemático) | Investigacion-P4 | Springer |
 | **P89** | Phenological and Biophysical Mediterranean Orchard Assessment Using Ground-Based Methods and Sentinel-2 Data | — | 2024 | *Remote Sensing* | **Seleccionaron 14 parcelas** para representar variabilidad de suelo, riego y manejo en huertos de cereza, nectarina y albaricoque. Criterios: accesibilidad + representatividad. Usaron Sentinel-2. | P4 — Ejemplo de **selección de parcelas por criterios agronómicos** (edad, variedad, manejo) complementado con Sentinel-2. | 🟡 Media | P4 — Selección de parcelas por criterios agronómicos | Investigacion-P4 | 10.3390/rs16183393 |
+| **P90** | Fruit Yield Estimation of Kinnow Mandarin Orchards — Integrating Canopy Physiology with Remote Sensing | Sun, Y.; Qin, Q.; Zhang, J.; Ren, H.; Han, R. | 2026 | *Arabian Journal of Geosciences* | **Usó Sentinel-2 Red Edge (S2REP)** combinado con LAI y clorofila para estimar rendimiento de mandarina Kinnow. R² = 0.85. Encontró variabilidad intra-huerto significativa en mandarinos. | P4 — **Cultivo más cercano a Murcott**. Valida que Sentinel-2 captura variabilidad entre parcelas de mandarinos. | 🟠 Alta | P4 — Variabilidad en mandarinos con Sentinel-2, respaldo a estratificación | Investigacion-P4 | 10.1007/s12517-026-12453-z |
+| **P91** | Comparing Efficiency of Different Sampling Schemes to Estimate Yield and Quality Parameters in Fruit Orchards | Arnó, J.; Martínez-Casasnovas, J.A.; Uribeetxebarria, A.; Escolà, A.; Rosell-Polo, J.R. | 2017 | *Advances in Animal Biosciences* | **Comparó estrategias de muestreo** en huertos frutales. La estratificación por NDVI fue **significativamente más eficiente** que el muestreo aleatorio simple. Con 2 estratos se captura la mayor parte de la variabilidad. | P4 — **Valida que estratificar por NDVI es superior al azar** en huertos. Respalda la selección de extremos. | 🔴 Crítico | P4 — Estratificación NDVI > aleatorio en huertos frutales | Investigacion-P4 | 10.1017/S2040470017000978 |
+| **P92** | Delineating Citrus Management Zones Using Spatial Interpolation and UAV-Based Multispectral Approaches | Longo-Minnolo, G. et al. | 2023 | *Precision Agriculture* | **Delineó zonas de manejo en cítricos** con NDVI (K-means clustering). Encontró que **3-4 zonas** son óptimas y que zonas con diferente vigor mostraron diferencias estadísticamente significativas. | P4 — **Valida en cítricos** que dividir por vigor captura diferencias reales. Respaldo directo al enfoque de estratificación. | 🟠 Alta | P4 — Zonas de manejo en cítricos con NDVI, respaldo a estratificación | Investigacion-P4 | Springer |
+| **P93** | UAV-Based High Throughput Phenotyping in Citrus Utilizing Multispectral Imaging and Artificial Intelligence | Ampatzidis, Y.; Partel, V. | 2019 | *Remote Sensing* | **Usó NDVI + YOLOv3** para fenotipado de cítricos desde UAV. NDVI correlaciona bien con tamaño de copa y sanidad. **99.9% precisión** en detección de árboles. | P4 — **Conecta NDVI + YOLO + cítricos**. Confirma que NDVI es buen predictor de vigor en cítricos. | 🟠 Alta | P4 — Correlación NDVI-vigor en cítricos, contexto YOLO | Investigacion-P4 | 10.3390/rs11040410 |
+| **P94** | Sampling Strategies for Soil Property Mapping Using Multispectral Sentinel-2 and Hyperspectral EnMAP Satellite Data | Castaldi, F.; Chabrillat, S.; van Wesemael, B. | 2019 | *Remote Sensing* | **Probó estrategias de muestreo** con Sentinel-2. S2 (10m) provee resolución suficiente para crear zonas de manejo. Kennard-Stones con S2 dio nRMSE 8.7-9.2%. | P4 — **Valida que Sentinel-2 (10m) tiene resolución adecuada** para muestreo agrícola a escala de parcela. | 🟡 Media | P4 — Resolución de S2-10m para muestreo agrícola | Investigacion-P4 | 10.3390/rs11030309 |
 
 ---
 
@@ -132,9 +137,9 @@
 |---|---|---|
 | **Elicit P1** (Software) | 16 |
 | **Elicit P2** (IMU) | 12 |
-| **Semantic Scholar / Web Search** (adicionales) | 47 |
+| **Semantic Scholar / Web Search** (adicionales) | 52 |
 | **Documentación técnica** | 6 |
-| **Total** | **95** |
+| **Total** | **100** |
 
 ---
 
@@ -142,13 +147,13 @@
 
 | Nivel | Cantidad | IDs |
 |---|---|---|
-| **🔴 Crítico** | 21 | P11, P13, P22, P23, P25, P27, P28, P31, P37, P40, P43, P57, P58, P64, P69, P70, P71, P74, P79, P82, P88 |
-| **🟠 Alta** | 30 | P10, P12, P18, P24, P26, P34, P35, P41, P42, P47, P49, P51, P55, P59, P60, P61, P62, P65, P66, P67, P68, P72, P73, P75, P76, P80, P81, P83, P85, P86 |
-| **🟡 Media** | 24 | P03, P29, P30, P32, P33, P36, P38, P39, P44, P45, P46, P48, P50, P53, P54, P56, P63, P77, P78, P84, P87, P89 |
+| **🔴 Crítico** | 22 | P11, P13, P22, P23, P25, P27, P28, P31, P37, P40, P43, P57, P58, P64, P69, P70, P71, P74, P79, P82, P88, **P91** |
+| **🟠 Alta** | 33 | P10, P12, P18, P24, P26, P34, P35, P41, P42, P47, P49, P51, P55, P59, P60, P61, P62, P65, P66, P67, P68, P72, P73, P75, P76, P80, P81, P83, P85, P86, **P90**, **P92**, **P93** |
+| **🟡 Media** | 26 | P03, P29, P30, P32, P33, P36, P38, P39, P44, P45, P46, P48, P50, P53, P54, P56, P63, P77, P78, P84, P87, P89, **P94** |
 | **🟢 Baja** | 13 | P01, P02, P04, P05, P06, P07, P08, P09, P14, P15, P16, P17, P19, P20, P21, P52 |
 | **⚪ Informativa** | 6 | D1, D2, D3, D4, D5, D6 |
 
-**Total: 95 referencias** (89 papers académicos + 6 documentación técnica)
+**Total: 100 referencias** (94 papers académicos + 6 documentación técnica)
 
 ---
 
@@ -301,11 +306,16 @@
 | P82 | Meyers et al. — Satellite NDVI sampling | 🔴 Crítico | NDVI3: selección por cuantiles NDVI satelital (Landsat 30m, bloques >10ha) |
 | P83 | Meyers & Vanden Heuvel — Sampling costs | 🟠 Alta | Eficiencia del muestreo NDVI satelital |
 | P84 | UAV vs Sentinel-2 management zones | 🟡 Media | Sentinel-2 captura zonas principales de vigor (10m) |
-| **P85** | **Morocco citrus — yield prediction (NUEVO)** | **🟠 Alta** | **Mean NDVI Sentinel-2 para 50 parcelas de cítricos** |
-| **P86** | **Kinnow mandarin Red Edge (NUEVO)** | **🟠 Alta** | **NDRE > NDVI para cítricos con Sentinel-2** |
-| **P87** | **Citrus orchard mapping Iran (NUEVO)** | **🟡 Media** | **Sentinel-2 clasifica cítricos con 99.7% precisión** |
-| **P88** | **Wulfsohn et al. — SUR sampling (NUEVO)** | **🔴 Crítico** | **SUR sistemático: error <10% en 11/14 huertos** |
-| **P89** | **Mediterranean orchard assessment (NUEVO)** | **🟡 Media** | **Selección de parcelas por criterios agronómicos** |
+| P85 | Morocco citrus — yield prediction | 🟠 Alta | Mean NDVI Sentinel-2 para 50 parcelas de cítricos |
+| P86 | Kinnow mandarin Red Edge | 🟠 Alta | NDRE > NDVI para cítricos con Sentinel-2 |
+| P87 | Citrus orchard mapping Iran | 🟡 Media | Sentinel-2 clasifica cítricos con 99.7% precisión |
+| P88 | Wulfsohn et al. — SUR sampling | 🔴 Crítico | SUR sistemático: error <10% en 11/14 huertos |
+| P89 | Mediterranean orchard assessment | 🟡 Media | Selección de parcelas por criterios agronómicos |
+| **P90** | **Sun et al. — Kinnow mandarin S2 RE** | **🟠 Alta** | **Variabilidad en mandarina Kinnow capturada por Sentinel-2 (R²=0.85)** |
+| **P91** | **Arnó et al. — Estratificación > aleatorio huertos** | **🔴 Crítico** | **Estratificación NDVI más eficiente que aleatorio en huertos frutales** |
+| **P92** | **Longo-Minnolo et al. — Zonas manejo cítricos** | **🟠 Alta** | **Zonas de manejo en cítricos con NDVI, diferencias significativas** |
+| **P93** | **Ampatzidis & Partel — UAV fenotipado cítricos** | **🟠 Alta** | **NDVI correlaciona con vigor en cítricos + YOLO 99.9% precisión** |
+| **P94** | **Castaldi et al. — S2 sampling strategies** | **🟡 Media** | **S2-10m adecuado para muestreo agrícola a escala parcela** |
 
 ### Metodologías Similares — Referencia Comparativa
 | ID | Paper | Importancia |

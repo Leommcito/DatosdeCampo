@@ -44,7 +44,7 @@ PRE-CAPTURA → CAPTURA → POST-PROCESAMIENTO → ENTRENAMIENTO
 
 ## 📊 Tabla Maestra de Referencias
 
-**Total: 95 referencias** (89 papers académicos + 6 documentación técnica)
+**Total: 100 referencias** (94 papers académicos + 6 documentación técnica)
 
 ### Por nivel de importancia
 
@@ -126,7 +126,7 @@ Ver archivo completo: [`Tabla-Maestra-Papers.md`](Tabla-Maestra-Papers.md)
 | **P3 — Protocolo Caminata** | ✅ Completado | 10 papers nuevos (P69-P78), justificación de 6 parámetros cerrada |
 | **Pipeline** | ✅ Completado | 7 etapas con referencias y IDs |
 | **Metodología** | ✅ Completado | 13 secciones, 12 metodologías similares |
-| **Tabla Maestra** | ✅ Completado | 95 referencias con trazabilidad |
+| **Tabla Maestra** | ✅ Completado | 100 referencias con trazabilidad |
 | **P4 — Selección Parcelas** | ✅ Completado hoy | 6 papers (P79-P84), metodología de muestreo estratificado con NDVI |
 | **Validación en campo** | 🔜 Pendiente | 05/06/2026 |
 
@@ -174,4 +174,4 @@ AE Lock (exposición fija)
 
 ---
 
-*Documento generado el 05/06/2026. 95 referencias catalogadas con trazabilidad completa.*
+*Documento generado el 05/06/2026. 100 referencias catalogadas con trazabilidad completa.*
