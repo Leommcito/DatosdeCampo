@@ -44,17 +44,17 @@ PRE-CAPTURA → CAPTURA → POST-PROCESAMIENTO → ENTRENAMIENTO
 
 ## 📊 Tabla Maestra de Referencias
 
-**Total: 100 referencias** (94 papers académicos + 6 documentación técnica)
+**Total: 138 referencias** (129 papers académicos + 9 documentación técnica)
 
 ### Por nivel de importancia
 
 | Nivel | Cantidad | Propósito |
 |---|---|---|
-| 🔴 **Crítico** | 21 | Decisión central del pipeline |
-| 🟠 **Alta** | 30 | Respalda decisiones técnicas |
-| 🟡 **Media** | 24 | Contexto metodológico |
-| 🟢 **Baja** | 13 | Referencia general |
-| ⚪ **Informativa** | 6 | Documentación técnica |
+| 🔴 **Crítico** | 24 | Decisión central del pipeline |
+| 🟠 **Alta** | 49 | Respalda decisiones técnicas |
+| 🟡 **Media** | 45 | Contexto metodológico |
+| 🟢 **Baja** | 12 | Referencia general |
+| ⚪ **Informativa** | 8 | Documentación técnica |
 
 ### Papers más importantes
 
@@ -79,10 +79,10 @@ Ver archivo completo: [`Tabla-Maestra-Papers.md`](Tabla-Maestra-Papers.md)
 | [`CONTEXTO-INVESTIGACION.md`](CONTEXTO-INVESTIGACION.md) | Marco general del proyecto, problemas, stack tecnológico |
 | [`Metodologia-Captura.md`](Metodologia-Captura.md) | Protocolo completo paso a paso (429 líneas) |
 | [`Pipeline-Captura-Recomendado.md`](Pipeline-Captura-Recomendado.md) | Versión sintética con decisiones y justificaciones |
-| [`Tabla-Maestra-Papers.md`](Tabla-Maestra-Papers.md) | **74 referencias catalogadas con IDs, importancia y trazabilidad** |
+| [`Tabla-Maestra-Papers.md`](Tabla-Maestra-Papers.md) | **130+ referencias catalogadas con IDs, importancia y trazabilidad** |
 | [`Investigacion-P1-Software-Captura.md`](Investigacion-P1-Software-Captura.md) | App de cámara y bloqueo de sensores |
 | [`Investigacion-P2-IMU-Telemetria.md`](Investigacion-P2-IMU-Telemetria.md) | Registro IMU y estabilización |
-| [`Investigacion-P3-Protocolo-Caminata.md`](Investigacion-P3-Protocolo-Caminata.md) | ✅ Completado — 6 parámetros justificados con 10 papers nuevos (P69-P78) |
+| [`Investigacion-P3-Protocolo-Caminata.md`](Investigacion-P3-Protocolo-Caminata.md) | ✅ Completado + investigación contradictoria — 6 parámetros originales (P69-P78) + 21 papers contradictorios/mejora (P110-P130) |
 | [`Investigacion-Herramientas-Motores-Busqueda.md`](Investigacion-Herramientas-Motores-Busqueda.md) | Comparativa de herramientas de búsqueda académica |
 | [`Investigacion-P4-Seleccion-Parcelas.md`](Investigacion-P4-Seleccion-Parcelas.md) | **NUEVO** — Selección de parcelas para muestreo en campo |
 | [`.specify/memory/constitution.md`](.specify/memory/constitution.md) | Constitución del proyecto v1.0.0 |
@@ -123,11 +123,11 @@ Ver archivo completo: [`Tabla-Maestra-Papers.md`](Tabla-Maestra-Papers.md)
 | **Constitución v1.0.0** | ✅ Completado | 5 principios + trazabilidad bibliográfica |
 | **P1 — App de Cámara** | ✅ Completado | 23 papers, justificación manual vs auto cerrada |
 | **P2 — IMU/Telemetría** | ✅ Completado | 20+ papers, gap OIS OFF cerrado |
-| **P3 — Protocolo Caminata** | ✅ Completado | 10 papers nuevos (P69-P78), justificación de 6 parámetros cerrada |
+| **P3 — Protocolo Caminata** | ✅ Completado + contradicciones | 10 papers originales (P69-P78) + 21 papers contradictorios/mejora (P110-P130). 6 parámetros justificados + evidencia contradictoria documentada |
 | **Pipeline** | ✅ Completado | 7 etapas con referencias y IDs |
 | **Metodología** | ✅ Completado | 13 secciones, 12 metodologías similares |
-| **Tabla Maestra** | ✅ Completado | 100 referencias con trazabilidad |
-| **P4 — Selección Parcelas** | ✅ Completado hoy | 6 papers (P79-P84), metodología de muestreo estratificado con NDVI |
+| **Tabla Maestra** | ✅ Completado | 138 referencias con trazabilidad |
+| **P4 — Selección Parcelas** | ✅ Completado | 6 papers (P79-P84), metodología de muestreo estratificado con NDVI |
 | **Validación en campo** | 🔜 Pendiente | 05/06/2026 |
 
 ---
@@ -174,4 +174,4 @@ AE Lock (exposición fija)
 
 ---
 
-*Documento generado el 05/06/2026. 100 referencias catalogadas con trazabilidad completa.*
+*Documento generado el 05/06/2026. 138 referencias catalogadas con trazabilidad completa. P3 contiene investigación contradictoria de 8 agentes paralelos (P110-P130).*

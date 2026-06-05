@@ -130,7 +130,28 @@
 | **P107** | Deep Online Fused Video Stabilization | Shi, Z.; Shi, F.; Lai, W.; Liang, C.; Liang, Y. | 2022 | *WACV 2022* (arXiv:2102.01279) | **Primer híbrido IMU+deep learning.** Gyro-only: Stability 0.846. Fused (gyro+optical flow): **0.853**. Mayor FOV (0.906 vs 0.827). Demuestra que IMU puro es superado por métodos híbridos. | P2 — **Contradice** la superioridad de IMU puro. Respalda el enfoque híbrido de Gyroflow. | 🟠 Alta | Etapa 2 — Estabilización (IMU+deep learning supera a IMU puro) | Investigacion-P2 (Contradicciones) | arXiv:2102.01279 |
 | **P108** | RStab: 3D Multi-frame Fusion for Video Stabilization | Peng, Z. et al. | 2024 | *CVPR 2024* (DOI: 10.1109/CVPR52733.2024.00710) | **SOTA en estabilización.** Cropping Ratio=1.00 (full-frame). Stability 0.92 vs gyro-only ~0.83. Deep learning 3D supera ampliamente a IMU puro. | P2 — **Contradice** la afirmación "IMU supera a óptica". Deep learning es SOTA actual. | 🟠 Alta | Etapa 2 — Estabilización (contexto SOTA, no usado en tesis por costo computacional) | Investigacion-P2 (Contradicciones) | 10.1109/CVPR52733.2024.00710 |
 | **P109** | Let's Roll: A Synthetic and Real Dataset for Pedestrian Detection Across Different Shutter Types | — | 2024 | *arXiv* (arXiv:2309.08136) | **RS correction NO necesaria** para detección de objetos a IoU≥0.5. A IoU≥0.5:0.95, discrepancia llega a 24% (bounding box positioning, no detección). Modelos pueden aprender a compensar RS. | P2 — **Contradice** la necesidad de rolling shutter correction para detección. Podría desactivarse en Gyroflow sin pérdida de mAP. | 🟠 Alta | Etapa 2 — Rolling shutter correction (beneficio negligible para detección) | Investigacion-P2 (Contradicciones) | arXiv:2309.08136 |
- 
+| **P110** | Simulation-Aided Development of CNN-Based Vision Module — Overlapping Rate | Sanchez, J.A.; Zhang, Y. | 2022 | *Appl. Sci.* 12(11), 5600 (DOI: 10.3390/app12125600) | Introduce overlapping rate formula: ro = (FOV × fps) / velocity. Tested 0.1-2.5 m/s. With 22 fps: speeds up to 2.5 m/s viable. ro < 1 creates coverage gaps. | P3 — **Contradice** límite de 1 m/s. Fórmula ro cuantifica velocidad máxima según FOV y fps. | 🟠 Alta | P3 — Velocidad de caminata (overlapping rate) | Investigacion-P3-Protocolo-Caminata | 10.3390/app12125600 |
+| **P111** | Assessing a Multi-Camera System to Enhance Fruit Visibility for Robotic Harvesting | Villacrés, J. et al. | 2024 | — (Sep 2024, pending DOI) | Single camera perpendicular to canopy: **88.3%** fruits detected. Two cameras: **97.5%** of four-camera system. Horizontal/perpendicular is optimal. | P3 — **Contradice** ángulo 15° up. Cámara perpendicular (0° horizontal) detecta 88.3% de frutos sola. | 🟠 Alta | P3 — Ángulo de cámara | Investigacion-P3-Protocolo-Caminata | — |
+| **P112** | Full-Surface Detection of Apple Fruits Using Enhanced YOLOv5 — Orientation Study | — | 2025 | *Springer* (DOI: 10.1007/s44462-025-00020-w) | Sideways orientation: **mAP 95%**, F1 90.58. Stem up: 86%. Stem down: 91.7%. Orientación sideways (horizontal) supera cualquier tilt. | P3 — **Contradice** 15° up. Orientación sideways (90°) = mAP 95%, superior a cualquier ángulo con tilt. | 🟡 Media | P3 — Ángulo de cámara | Investigacion-P3-Protocolo-Caminata | 10.1007/s44462-025-00020-w |
+| **P113** | Cluster Segmentation and Stereo Vision-Based Apple Localization for Robotic Harvesting | — | 2025 | *Frontiers in Plant Science* (DOI: 10.3389/fpls.2025.1598414) | Tested 0°, 15°, 30°, 45°. **45°**: highest detection rate (>40%). Algoritmo estable en rango 0°-45°. | P3 — **Contradice** 15° up. 45° supera a 15° para tasa de detección. | 🟡 Media | P3 — Ángulo de cámara | Investigacion-P3-Protocolo-Caminata | 10.3389/fpls.2025.1598414 |
+| **P114** | Experiments and Analysis of Close-Shot Identification of On-Branch Citrus Fruit with RealSense | — | 2018 | *Sensors* (MDPI) | Optimal close-shot: **160-700 mm** (0.16-0.7m). 80-100% at little occlusion, 63.8% severe. "Close, large, and clear" — less redundant info. | P3 — **Contradice** distancia 0.8-1.5m. Para cítricos, distancia óptima es <0.7m. | 🟠 Alta | P3 — Distancia al dosel | Investigacion-P3-Protocolo-Caminata | MDPI Sensors 2018 |
+| **P115** | Stereo Vision-Based Detection of Loose Oil Palm Fruits | — | 2024 | — | Tested 20-120 cm. Best detection at **30 cm**: 97.63% accuracy, F1=0.99. Distance estimation optimal at 50 cm: MAPE 0.86%. | P3 — **Contradice** distancia 0.8-1.5m. 0.3m óptimo para detección, muy por debajo. | 🟡 Media | P3 — Distancia al dosel | Investigacion-P3-Protocolo-Caminata | — |
+| **P116** | Intelligent Integrated System for Fruit Detection Using Multi-UAV Imaging and Deep Learning | — | 2024 | *Sensors* (DOI: 10.3390/s24093743) | Peak at **NOON**: Precision **92.1%**, F1 **90.5%**. Cloudy: 86.1%. Strong shade: 78.1%. Sol cenital (mediodía) da el mejor rendimiento. | P3 — **Contradice FUERTEMENTE** "evitar mediodía". Sol cenital = mejor condición: 92.1% precision. | 🟠 Alta | P3 — Horario/iluminación | Investigacion-P3-Protocolo-Caminata | 10.3390/s24093743 |
+| **P117** | YOLOv8n-CSE: A Model for Detecting Litchi in Nighttime Environments | — | 2024 | — | LED matrix (210-350 Lux). Night detection: **mAP@0.5 = 98.86%**, **F1 = 95.54%**. Only 4.93M parameters. | P3 — **Mejora**: noche con LED = 98.86% mAP, superior a detección diurna. | 🟠 Alta | P3 — Iluminación nocturna | Investigacion-P3-Protocolo-Caminata | — |
+| **P118** | Nighttime Harvesting of OrBot (Orchard RoBot) | — | 2024 | — | Nighttime: **94%** harvesting success. Daytime: **88%**. LED 5600K, 10% intensity, frontal. Elimina sombras nocturnas. | P3 — **Mejora**: noche 94% > día 88% con LED controlado (5600K, 10%). | 🟠 Alta | P3 — Iluminación nocturna | Investigacion-P3-Protocolo-Caminata | — |
+| **P119** | YOLO-P: An Efficient Method for Pear Fast Detection in Complex Orchard Environment | — | 2022 | *Frontiers in Plant Science* (DOI: 10.3389/fpls.2022.1089454) | Night detection with 1000 lm: **F1 96.1%**. Natural light: ~93%. 5257 images including nighttime with artificial lighting. | P3 — **Mejora**: noche con 1000 lm = 96.1% F1, supera luz natural. | 🟡 Media | P3 — Iluminación nocturna | Investigacion-P3-Protocolo-Caminata | 10.3389/fpls.2022.1089454 |
+| **P120** | The Effect of Illumination on HSV Colour Segmentation for Tomato | — | 2024 | — | Minimum **3,000 lx** required for accurate segmentation. Cloudy provides only 1,000-2,000 lx. At 1,600 lx: only **50% of fruit area** detected. | P3 — **Contradice** "nublado ideal". Nublado es insuficiente (<3,000 lx mínimo). | 🟡 Media | P3 — Iluminación | Investigacion-P3-Protocolo-Caminata | — |
+| **P121** | Burst Photography for High Dynamic Range and Low-Light Imaging (HDR+) | Hasinoff, S. et al. | 2016 | *ACM Trans. Graphics* | Captures burst of underexposed frames, merges to reduce noise without motion blur. "Shorter than typical exposure times in a conventional pipeline" — reducing motion blur. | P3 — **Mejora**: burst photography > exposición fija única. Alternativa a shutter fijo. | 🟡 Media | P3 — Shutter speed | Investigacion-P3-Protocolo-Caminata | ACM TOG 2016 |
+| **P122** | DEBIR: Dynamic Exposure Burst Image Restoration | — | 2026 | *arXiv* (arXiv:2603.21784) | BAENet predicts optimal per-frame exposure times adaptively. Preview at 1/120s, burst uses varied exposures. Outperforms fixed exposure bracketing. | P3 — **Mejora**: exposición adaptativa por frame supera a 1/60-1/120s fijo. | 🟡 Media | P3 — Shutter speed | Investigacion-P3-Protocolo-Caminata | arXiv:2603.21784 |
+| **P123** | Estimation of Passion Fruit Yield Based on YOLOv8n + OC-SORT + CRCM Algorithm | — | 2025 | *Computers and Electronics in Agriculture* (DOI: 10.1016/j.compag.2024.109727) | **OC-SORT**: HOTA **67.10%**. StrongSORT: 58.28%. ByteTrack: 62.39%. BoT-SORT: 64.12%. OC-SORT handles occlusion and shaking. | P3 — **Contradice**: OC-SORT (HOTA 67.10%) supera ByteTrack (62.39%) para fruta. | 🟠 Alta | P3 — Tracking/anti-doble conteo | Investigacion-P3-Protocolo-Caminata | 10.1016/j.compag.2024.109727 |
+| **P124** | Deep OC-SORT: Multi-Pedestrian Tracking by Adaptive Re-Identification | — | 2023 | *arXiv* (arXiv:2302.11813) | MOT17: HOTA **64.9** vs ByteTrack 63.1. DanceTrack: **61.3** vs ByteTrack 47.3. Adaptive Re-ID weight based on feature quality. | P3 — **Mejora**: Deep OC-SORT (HOTA 64.9) supera ByteTrack (63.1) en benchmarks. | 🟡 Media | P3 — Tracking | Investigacion-P3-Protocolo-Caminata | arXiv:2302.11813 |
+| **P125** | FTO-SORT: Fast Track-id Optimizer for Enhanced Multi-Object Tracking | — | 2025 | *Computers and Electronics in Agriculture* 237, 110540 (DOI: 10.1016/j.compag.2025.110540) | **IDF1 90.2%** (+18.0% over baseline). No Re-ID: ~10x faster on edge device. Farm-specific tracking optimizer. | P3 — **Mejora**: FTO-SORT IDF1 90.2%, +18% sobre baseline. 10× más rápido. | 🟡 Media | P3 — Tracking | Investigacion-P3-Protocolo-Caminata | 10.1016/j.compag.2025.110540 |
+| **P126** | LOCALIZESORT: Localization-Based Stationary Object Tracking in Precision Agriculture | — | 2026 | *SSRN* (DOI: 10.2139/ssrn.4829514) | World-coordinate association for stationary objects. Mango count error: **187** vs DeepSORT 263, StrongSORT 217. Reduce sobreconteo significativamente. | P3 — **Mejora**: coordenadas del mundo para objetos estáticos reduce sobreconteo. | 🟡 Media | P3 — Tracking/anti-doble conteo | Investigacion-P3-Protocolo-Caminata | 10.2139/ssrn.4829514 |
+| **P127** | PineSORT: Simple Online Real-Time Tracking Framework for Drone Videos in Agriculture | — | 2025 | *CVPR 2025 Workshops* (DOI: 10.1109/CVPRW67362.2025.00012) | Motion direction cost + ORB camera compensation + 3-stage association. Improves significantly over BoTSORT and AgriSORT in ISP-IDF1, IDF1, HOTA, AssA. Low-FPS capable. | P3 — **Mejora**: tracker con compensación de cámara. CVPR workshop. Superior en HOTA/IDF1. | 🟡 Media | P3 — Tracking | Investigacion-P3-Protocolo-Caminata | 10.1109/CVPRW67362.2025.00012 |
+| **P128** | CoTracker3 — Adaptive Vision-Guided Robotic Arm Control for Precision Pruning | — | 2025 | *arXiv* (arXiv:2504.07309) | Point tracking transformer. **93%** pruning success. Error trajectory: 0.23mm. **27% faster** than LoCoTrack. Joint tracking infers occluded points. | P3 — **Mejora**: point tracking para oclusiones. Alternativa a bounding-box tracking. | 🟡 Media | P3 — Tracking | Investigacion-P3-Protocolo-Caminata | arXiv:2504.07309 |
+| **P129** | Transformer-Based Spatio-Temporal Association of Apple Fruitlets | — | 2025 | *arXiv* (arXiv:2503.03200) | Shape + position encoding + transformer attention. **F1 92.4%** (vs ICP 89.5%, Desc 86.4%). Cross-day matching. | P3 — **Mejora**: transformer para asociación temporal F1 92.4%. Supera a métodos clásicos. | 🟡 Media | P3 — Tracking | Investigacion-P3-Protocolo-Caminata | arXiv:2503.03200 |
+| **P130** | MOT-DETR-3D: Single Shot Detection and Tracking with Transformers for Agro-Food Robots | — | 2023 | *arXiv* (arXiv:2311.15674) | HOTA **60.4**, MOTA **70.38** vs FairMOT 46.06/51.49. 3D data improves tracking of visually similar objects (like tomatoes). | P3 — **Mejora**: transformer 3D para tracking de fruta. HOTA 60.4. | 🟡 Media | P3 — Tracking | Investigacion-P3-Protocolo-Caminata | arXiv:2311.15674 |
+
 ## Papers de documentación técnica (no académicos)
 
 | ID | Nombre | Tipo | Contexto | Importancia | Justifica a | Link |
@@ -151,9 +172,10 @@
 | **Elicit P1** (Software) | 16 |
 | **Elicit P2** (IMU) | 12 |
 | **Investigación contradicciones P2** (nuevos, 2025) | 10 |
+| **Investigación contradicciones P3** (nuevos, 2026) | 21 |
 | **Semantic Scholar / Web Search** (adicionales) | 57 |
 | **Documentación técnica** | 8 |
-| **Total** | **117** |
+| **Total** | **138** |
 
 ---
 
@@ -162,12 +184,12 @@
 | Nivel | Cantidad | IDs |
 |---|---|---|
 | **🔴 Crítico** | 24 | P11, P13, P22, P23, P25, P27, P28, P31, P37, P40, P43, P57, P58, P62, P64, P69, P70, P71, P74, P79, P82, P88, P91, **P96** |
-| **🟠 Alta** | 42 | P10, P12, P18, P24, P26, P34, P35, P41, P42, P47, P49, P51, P55, P59, P61, P65, P66, P67, P68, P72, P73, P75, P76, P80, P81, P83, P85, P86, P90, P92, P93, **P95**, **P97**, **P98**, **P100**, **P103**, **P105**, **P106**, **P107**, **P108**, **P109** |
-| **🟡 Media** | 31 | P03, P29, P30, P32, P33, P36, P38, P39, P44, P45, P46, P48, P50, P53, P54, P56, P60, P63, P77, P78, P84, P87, P89, P94, **P99**, **P101**, **P102**, **P104** |
+| **🟠 Alta** | 49 | P10, P12, P18, P24, P26, P34, P35, P41, P42, P47, P49, P51, P55, P59, P61, P65, P66, P67, P68, P72, P73, P75, P76, P80, P81, P83, P85, P86, P90, P92, P93, **P95**, **P97**, **P98**, **P100**, **P103**, **P105**, **P106**, **P107**, **P108**, **P109**, **P110**, **P111**, **P114**, **P116**, **P117**, **P118**, **P123** |
+| **🟡 Media** | 45 | P03, P29, P30, P32, P33, P36, P38, P39, P44, P45, P46, P48, P50, P53, P54, P56, P60, P63, P77, P78, P84, P87, P89, P94, **P99**, **P101**, **P102**, **P104**, **P112**, **P113**, **P115**, **P119**, **P120**, **P121**, **P122**, **P124**, **P125**, **P126**, **P127**, **P128**, **P129**, **P130** |
 | **🟢 Baja** | 12 | P01, P02, P04, P05, P06, P07, P08, P09, P14, P15, P16, P17, P19, P20, P21, P52 |
 | **⚪ Informativa** | 8 | D1, D2, D3, D4, D5, D6, D7, D8 |
 
-**Total: 117 referencias** (109 papers académicos + 8 documentación técnica)
+**Total: 138 referencias** (130 papers académicos + 8 documentación técnica)
 
 ---
 
@@ -319,6 +341,8 @@
 | P100-P109 | Papers de contradicciones y matices (investigación 2025) | Varios |
 
 > **Nota:** Los papers P100-P109 surgieron de una investigación específica de validación/contradicción de las afirmaciones del Paso 2. Ver sección "Contradicciones y Matices" en Investigacion-P2-IMU-Telemetria.md.
+> 
+> Los papers P110-P130 surgieron de una investigación específica de contradicciones del Paso 3 ejecutada con 8 agentes librarian paralelos (05/06/2026). Ver secciones "1b-6b. Contradicciones y evidencia complementaria" en Investigacion-P3-Protocolo-Caminata.md.
 
 ### Investigación P3 — Protocolo Caminata (contexto general)
 | ID | Paper | Importancia |
@@ -346,6 +370,30 @@
 | **P76** | **Orchard-YOLO — ±50% iluminación (NUEVO)** | **🟠 Alta** |
 | **P77** | **AgRowStitch — iPhone 13 caminata manual (NUEVO)** | **🟡 Media** |
 | **P78** | **Mango sizing — 6 km/h, 1-3m (NUEVO)** | **🟡 Media** |
+| **P103** | **FEGW-YOLO — modelos tolerantes a blur (P3)** | **🟠 Alta** |
+| **P105** | **Knowledge Distillation — blur mínimo 2.5% drop (P3)** | **🟠 Alta** |
+| **P106** | **MDPI Electronics — YOLOv4 más robusto a blur (P3)** | **🟠 Alta** |
+| **P110** | **Sanchez & Zhang — Overlapping Rate (CONTRADICE velocidad)** | **🟠 Alta** |
+| **P111** | **Villacrés — Multi-cámara 0°=88.3% (CONTRADICE ángulo)** | **🟠 Alta** |
+| **P112** | **Apple Orientation — Sideways mAP 95% (CONTRADICE ángulo)** | **🟡 Media** |
+| **P113** | **Cluster Segmentation — 45° > 15° (CONTRADICE ángulo)** | **🟡 Media** |
+| **P114** | **RealSense Citrus — 0.16-0.7m óptimo (CONTRADICE distancia)** | **🟠 Alta** |
+| **P115** | **Oil Palm Stereo — 0.3m óptimo (CONTRADICE distancia)** | **🟡 Media** |
+| **P116** | **Multi-UAV — Mediodía precision 92.1% (CONTRADICE horario)** | **🟠 Alta** |
+| **P117** | **YOLOv8n-CSE Litchi Night — 98.86% mAP noche (MEJORA)** | **🟠 Alta** |
+| **P118** | **OrBot Night — 94% noche vs 88% día (MEJORA)** | **🟠 Alta** |
+| **P119** | **YOLO-P Pear — 96.1% F1 noche (MEJORA)** | **🟡 Media** |
+| **P120** | **Tomato HSV — 3,000 lx mínimo (CONTRADICE nublado)** | **🟡 Media** |
+| **P121** | **HDR+ Hasinoff — Burst photography (MEJORA shutter)** | **🟡 Media** |
+| **P122** | **DEBIR — Exposición adaptativa (MEJORA shutter)** | **🟡 Media** |
+| **P123** | **OC-SORT — HOTA 67.10% > ByteTrack 62.39% (CONTRADICE)** | **🟠 Alta** |
+| **P124** | **Deep OC-SORT — HOTA 64.9 (MEJORA tracking)** | **🟡 Media** |
+| **P125** | **FTO-SORT — IDF1 90.2% (MEJORA tracking)** | **🟡 Media** |
+| **P126** | **LocalizeSORT — Error 187 vs 263 (MEJORA tracking)** | **🟡 Media** |
+| **P127** | **PineSORT — CVPR 2025 (MEJORA tracking)** | **🟡 Media** |
+| **P128** | **CoTracker3 — Point tracking (MEJORA tracking)** | **🟡 Media** |
+| **P129** | **Transformer Apple Fruitlet — F1 92.4% (MEJORA tracking)** | **🟡 Media** |
+| **P130** | **MOT-DETR-3D — HOTA 60.4 (MEJORA tracking)** | **🟡 Media** |
 
 ### Investigación P4 — Selección de Parcelas y Muestreo
 | ID | Paper | Importancia | ¿Qué justifica? |

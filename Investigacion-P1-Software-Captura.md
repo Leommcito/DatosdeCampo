@@ -121,14 +121,16 @@ Resultados de búsqueda específica para justificar el uso de controles manuales
 
 ---
 
-### Paper 10: Stanford — CNN + Exposure Bias (Google Research, 2018) — [P60] 🟠 Alta
+### Paper 10: Stanford — CNN + Exposure Bias (Google Research, 2018) — [P60] 🟡 Media
 
 | Hallazgo | Valor |
 |---|---|
-| **Caída de precisión CNN** | **~20%** cuando hay sesgo de exposición |
-| **Conclusión** | Exposición inconsistente degrada directamente la precisión de detección |
+| **Impacto en CNN** | Redes entrenadas con exposición fija no generalizan bien a diferentes exposiciones. Asimetría: sub-exposición se maneja mejor que sobre-exposición. |
+| **Conclusión** | Exposición inconsistente degrada la precisión de detección |
 
-**Relevancia:** Evidencia directa de que AE Lock mejora la detección.
+⚠️ **Nota**: La cifra exacta de "~20% caída de precisión" no pudo ser verificada en el paper original encontrado ("Optimizing Image Acquisition Systems for Autonomous Driving", Blasinski et al., Stanford, 2018). El paper SÍ demuestra que exposiciones subóptimas degradan CNNs, pero el valor cuantitativo exacto requiere verificación. Se ha reducido la importancia a 🟡 Media.
+
+**Relevancia:** Evidencia de que AE Lock mejora la detección, aunque el valor cuantitativo exacto requiere verificación.
 
 ---
 
@@ -144,15 +146,17 @@ Resultados de búsqueda específica para justificar el uso de controles manuales
 
 ---
 
-### Paper 12: Camera2 API para investigación (Nature/PMC, 2023) — [P62] 🟠 Alta
+### Paper 12: Camera2 API para investigación (Frontiers in Digital Health, 2023) — [P62] 🔴 Crítico
 
 | Hallazgo | Valor |
 |---|---|
-| **Tone mapping automático** | Aplica transformaciones **no lineales irreversibles** |
-| **Camera2 API** | Permite desactivar tone mapping, fijar WB y control manual total |
-| **Conclusión** | Camera2 API es necesaria para investigación científica con smartphone |
+| **Tone mapping automático** | Aplica transformaciones **no lineales irreversibles**. "Cannot be reversed in post processing" |
+| **Camera2 API** | Permite configurar tone mapping lineal (CONTRAST_CURVE con puntos de control). **74% menor MAE** vs default automático |
+| **Conclusión** | Camera2 API es necesaria para investigación científica con smartphone. iOS no ofrece control equivalente de tone mapping |
 
-**Relevancia:** Valida que Camera2 API es el estándar para captura científica. Respalda usar Open Camera.
+✅ **Corregido**: La fuente correcta es *Frontiers in Digital Health* (2023, PMC10705321), no Nature/PMC. DOI: 10.3389/fdgth.2023.1301019. Importancia elevada a 🔴 Crítico por la evidencia cuantitativa del 74% de mejora.
+
+**Relevancia:** Valida que Camera2 API es el estándar para captura científica con control de tone mapping lineal. Respalda usar Open Camera con Camera2 API.
 
 ---
 
@@ -176,10 +180,14 @@ Resultados de búsqueda específica para justificar el uso de controles manuales
 | Auto-exposure falla en alto rango dinámico | Primer plano oscuro al exponer para cielo | LEDs paper (2021) | [P57] |
 | Manual supera a auto | MSE 1.57 vs 4.26 | Phenotyping (2018) | [P58] |
 | Parámetros fijos reducen datos necesarios | 4x menos datos de entrenamiento | Illumination-Invariant (2021) | [P59] |
-| Exposición inconsistente degrada CNN | ~20% caída precisión | Stanford (2018) | [P60] |
+| Exposición inconsistente degrada CNN | Redes no generalizan con exposición variable | Stanford (2018) | [P60] ⚠️ |
 | Focus hunting degrada calidad | Lente oscila, FoV cambia | CVPR (2025) | [P61] |
-| Camera2 API necesario para control científico | Tone mapping irreversible en auto | Nature/PMC (2023) | [P62] |
+| Camera2 API necesario para control científico | Tone mapping irreversible. 74% menor MAE con lineal | Frontiers Digit. Health (2023) | [P62] |
 | Luz no controlada destruye detección | F1 0.82 → 0.13 con glare | Kiwifruit (2020) | [P63] |
+| ISP automático degrada detección YOLO | Contraste/gamma/saturación causan falsos negativos | ISP Tuning (2023) | [P95] |
+| Parámetros auto causan fluctuación | 13-14% fluctuación en detección en escenas estáticas | ECCV (2022) | [P96] |
+| ISP pipeline pierde información útil | 7.1% más precisión entrenando en RAW vs ISP-processed | ISP-less CV (2022) | [P97] |
+| ISP default es sub-óptimo para detección | 28% mejora con AdaptiveISP vs ISP default | NeurIPS (2024) | [P98] |
 
 ---
 
@@ -187,14 +195,14 @@ Resultados de búsqueda específica para justificar el uso de controles manuales
 
 | Aspecto | Elicit | Semantic Scholar | Gap |
 |---|---|---|---|
-| Apps de cámara nombradas | ❌ Ninguna | ❌ Ninguna | **Nadie documenta qué app usó** |
+| Apps de cámara nombradas | ❌ Ninguna | ⚠️ 1 paper (PMC12057810) nombra **Open Camera v1.52** | **Solo 1 paper en toda la literatura — sigue siendo extremadamente raro** |
 | Parámetros de cámara (ISO, shutter, etc.) | ❌ No reportados | ⚠️ 1 paper (arroz) sí los reporta | Solo 1 paper en toda la literatura |
 | Justificación de por qué fijar parámetros | ❌ No existe | ⚠️ 1 paper dice "to minimize lighting factors" | Justificación débil |
 | Distancia al objetivo | ❌ No reportada | ✅ Varios papers: 0.3-1.5m, 8-15cm, 27.5cm | Hay datos pero no comparativos |
 | Holder/soporte físico | ❌ No reportado | ✅ 1 paper (café) con holder + botones | Solo 1 paper |
 | Integración IMU + cámara | ❌ No reportada | ✅ 1 paper (café) con IMU para blur detection | Solo 1 paper |
 | Dispositivos específicos | ⚠️ Algunos (iPhone X, Xiaomi, Huawei) | ✅ Varios (iPhone 8, Galaxy S5, Redmi Note 7, etc.) | Complementario |
-| Open Camera / Filmic Pro / MCPro24fps | ❌ No existen en papers agrícolas | ❌ No existen en papers agrícolas | **Gap confirmado — contribución de tu tesis** |
+| Open Camera / Filmic Pro / MCPro24fps | ❌ No existen en papers agrícolas | ⚠️ 1 paper (PMC12057810) nombra **Open Camera v1.52** en fenotipado de hojas | **Solo 1 paper documenta Open Camera. Ningún paper documenta MCPro24fps o Filmic Pro en agricultura** |
 
 ---
 
@@ -242,7 +250,7 @@ Además de papers, se investigó documentación técnica:
 
 ## Gap confirmado para la tesis
 
-> **No existe un paper agrícola que documente qué app de cámara profesional se usó, con qué configuración y por qué.**
+> **Solo 1 paper en toda la literatura (PMC12057810, fenotipado de hojas) documenta Open Camera v1.52 con configuración detallada. Ningún paper documenta el flujo completo (app + configuración + IMU + pipeline) para detección de frutos en video.**
 
 Papers actuales:
 - Usan smartphones pero **no dicen qué app**
@@ -259,11 +267,108 @@ Ahora contamos con **7 papers nuevos** que respaldan el Paso 1:
 | [P57] | LEDs paper | 85% menos variación con exposición fija |
 | [P58] | Phenotyping | Manual 2.7x más consistente que auto |
 | [P59] | Illumination-Invariant | 4x menos datos con imágenes consistentes |
-| [P60] | Stanford CNN | ~20% caída precisión con exposición variable |
+| [P60] | Stanford CNN | Exposición variable degrada CNNs (⚠️ claim ~20% no verificado) |
 | [P61] | CVPR 2025 | Focus hunting es un problema real |
-| [P62] | Camera2 API | Control manual necesario para investigación |
+| [P62] | Camera2 API (Frontiers Digital Health) | Tone mapping irreversible. 74% menor MAE con lineal |
 | [P63] | Kiwifruit glare | F1 cae de 0.82 a 0.13 con luz no controlada |
 
-**Gap que persiste:** Ninguno de estos papers usa ni compara apps de cámara específicas (Open Camera, Filmic Pro) ni documenta el flujo completo app + IMU + procesamiento.
+### Nueva evidencia adicional encontrada (2023-2026)
 
-**Tu contribución original:** Documentar y justificar todo el pipeline de captura (app + configuración + IMU + procesamiento) con métricas cuantitativas de impacto en YOLO.**
+Una investigación bibliográfica complementaria (Junio 2026) encontró evidencia adicional que **FORTALECE** la posición del Paso 1:
+
+| ID | Evidencia | Lo que demuestra |
+|---|---|---|
+| [P95] | ISP Tuning (MDPI J. Imaging, 2023) | Contraste, gamma y saturación del ISP automático degradan significativamente YOLOv5/v8, Faster R-CNN y RT-DETR. Los objetos pequeños son los más afectados. |
+| [P96] | ECCV 2022 - "Unintentional Adversary" | La cámara con parámetros automáticos causa 13-14% fluctuación en detección en escenas estáticas. 5.4x falsos track-IDs. |
+| [P97] | RAW > ISP-processed (ISP-less CV, 2022) | 7.1% más precisión entrenando en dominio RAW vs RGB procesado por ISP. El ISP pierde información útil para detección. |
+| [P98] | AdaptiveISP (NeurIPS 2024) | El pipeline ISP por defecto es sub-óptimo para detección. AdaptiveISP logra 28% mejor mAP optimizando el ISP para la tarea. |
+
+**Gap que persiste:** Solo 1 paper en toda la literatura (PMC12057810, fenotipado de hojas) documenta Open Camera con configuración detallada. Ningún paper documenta el **flujo completo** app + configuración + IMU + procesamiento para detección de frutos en video.
+
+**Tu contribución original:** Documentar y justificar todo el pipeline de captura (app + configuración + IMU + procesamiento) con métricas cuantitativas de impacto en YOLO. El experimento A/B (Protocolo vs Cámara Nativa) medirá si el control de captura sigue siendo relevante frente a detectores modernos robustos a iluminación.
+
+---
+
+## 🆕 Actualización post-investigación (Junio 2026)
+
+Tras una investigación bibliográfica adicional con 6 búsquedas paralelas en Semantic Scholar, web y GitHub, se encontró nueva evidencia que **FORTALECE** la posición del Paso 1, así como correcciones a referencias citadas.
+
+### Nueva evidencia que fortalece el Paso 1
+
+#### 1. El pipeline ISP automático degrada la detección YOLO [P95]
+
+El paper "Impact of ISP Tuning on Object Detection" (MDPI J. Imaging, 2023) demuestra que:
+- Contraste, gamma y saturación (componentes del ISP automático) causan **degradación significativa** en YOLOv5/v8, Faster R-CNN y RT-DETR
+- La variación de ISP afecta **desproporcionadamente a objetos pequeños** — crítico para mandarinas en huerto denso
+- La mayoría de errores introducidos son **falsos negativos** (objetos no detectados)
+
+**Implicación**: El procesamiento automático que hace la cámara (tone mapping, gamma, saturación) no solo es "no reversible" [P62], sino que **activamente perjudica** la detección.
+
+#### 2. La cámara actúa como "unintentional adversary" de la detección [P96]
+
+El paper de ECCV 2022 "Why is the video analytics accuracy fluctuating" demuestra que:
+- **13-14% de fluctuación** en conteo de detecciones sobre escenas **estáticas** (sin movimiento)
+- La causa raíz son los cambios automáticos de parámetros de cámara
+- Transfer-learning redujo errores de tracking en **~40%**
+- Modelo original creó **157 track-IDs** para solo 29 objetos reales (5.4x falsos)
+
+**Implicación**: El simple hecho de usar modo automático introduce **ruido en la medición** que no existe en modo manual. Esto justifica directamente el bloqueo de AE/AF/WB.
+
+#### 3. La detección en RAW supera a RGB procesado por ISP [P97]
+
+Múltiples papers (2022-2026) muestran que entrenar modelos en dominio RAW:
+- **7.1% más precisión** que con imágenes procesadas por ISP (ISP-less CV, 2022)
+- "Freedom from the nonlinear distortions introduced by the ISP pipeline" (RAWild, 2026)
+- Aprendizaje de gamma correction en RAW supera baseline RGB
+
+**Implicación**: El ISP automático **pierde información** útil para detección. Al usar Camera2 API con tone mapping lineal [P62], nos acercamos más al dominio RAW.
+
+#### 4. El ISP por defecto NO es óptimo para detección [P98]
+
+AdaptiveISP (NeurIPS 2024) demuestra que el pipeline ISP puede optimizarse específicamente para detección, logrando **28% mejor mAP** (71.4 vs 55.6). Solo algunas etapas ISP son útiles — el pipeline default es sub-óptimo.
+
+**Implicación**: Incluso si el ISP automático produce imágenes "bonitas" para el ojo humano, no están optimizadas para YOLO. El control manual via Camera2 API permite evitar este problema.
+
+### Correcciones a referencias citadas
+
+#### [P60] — Stanford CNN + Exposure Bias
+
+⚠️ **Nota**: La cifra exacta de "~20% caída de precisión" no pudo ser verificada en el paper original encontrado ("Optimizing Image Acquisition Systems for Autonomous Driving", Blasinski et al., Stanford, 2018). El paper SÍ demuestra que exposiciones subóptimas degradan significativamente CNNs (asimetría sub/sobre-exposición, falta de generalización), pero el valor exacto requiere verificación. La importancia de P60 se ha reducido a 🟡 Media hasta verificar el claim exacto.
+
+#### [P62] — Camera2 API para investigación
+
+✅ **Corregido**: El paper citado como "Nature/PMC" es en realidad:
+- **Título**: "A calibration method for smartphone camera photoplethysmography"
+- **Publicación**: *Frontiers in Digital Health* (2023)
+- **PMID**: PMC10705321
+- **DOI**: 10.3389/fdgth.2023.1301019
+- **Hallazgo clave**: Tone mapping lineal vía Camera2 API logra **74% menor MAE** vs default automático. "The adaptive control causes nonlinear effects that cannot be reversed in post processing."
+
+La importancia de P62 se ha elevado a 🔴 **Crítico** por la solidez del hallazgo (74% de mejora cuantificada).
+
+### Open Camera documentada en investigación previa [P99]
+
+Se encontró el paper PMC12057810 (2024) que **documenta explícitamente Open Camera v1.52** con configuración detallada:
+- ISO=200 fijo, shutter=1/100s
+- AF deshabilitado, compensación de exposición deshabilitada
+- Razón explícita: "to ensure uniformity across images"
+
+Esto **matiza** el claim de que "ningún paper documenta apps de cámara". La afirmación correcta es:
+
+> "Es **extremadamente raro** que papers agrícolas documenten qué app de cámara usaron. Solo se encontró **un paper** (en fenotipado de hojas, no en detección de frutos) que nombra Open Camera con configuración detallada. **Ningún paper** documenta el flujo completo (app + configuración + IMU + pipeline) para detección de frutos en video."
+
+### Discusión: Nuevo paradigma de detección robusta (2024-2026)
+
+Es importante reconocer que entre 2024-2026 han surgido detectores (Orchard-YOLO 2026, YOLO-PBGM 2025) que logran **>94% mAP** incluso con variaciones de iluminación de ±50%, mediante técnicas como:
+- Data augmentation con exposición randomizada
+- Mecanismos de atención (GAM, CBAM)
+- Aprendizaje de features illumination-invariant (YOLA, NeurIPS 2024)
+
+**Sin embargo, esto NO invalida el Paso 1** por las siguientes razones:
+
+1. **Ambos paradigmas son complementarios**: Controlar la captura + entrenar modelos robustos debería dar el mejor resultado
+2. **No hay experimento que compare**: Precisamente, el experimento A/B de esta tesis (Protocolo vs Cámara Nativa) es lo que falta en la literatura
+3. **Escenario extremo**: El huerto denso de mandarinas (frutos pequeños, alta oclusión, follaje denso) es más desafiante que los escenarios donde se probaron esos modelos
+4. **El ISP sigue siendo un problema**: Aunque el detector sea robusto a iluminación, el tone mapping, gamma y saturación del ISP automático siguen degradando la información [P95][P96][P97]
+
+Por lo tanto, el Paso 1 se mantiene como **válido y necesario**, con la salvedad de que su impacto debe evaluarse en el contexto del experimento A/B planificado (Protocolo vs Cámara Nativa con métricas YOLO).**
