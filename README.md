@@ -44,15 +44,15 @@ PRE-CAPTURA → CAPTURA → POST-PROCESAMIENTO → ENTRENAMIENTO
 
 ## 📊 Tabla Maestra de Referencias
 
-**Total: 74 referencias** (68 papers académicos + 6 documentación técnica)
+**Total: 95 referencias** (89 papers académicos + 6 documentación técnica)
 
 ### Por nivel de importancia
 
 | Nivel | Cantidad | Propósito |
 |---|---|---|
-| 🔴 **Crítico** | 16 | Decisión central del pipeline |
-| 🟠 **Alta** | 21 | Respalda decisiones técnicas |
-| 🟡 **Media** | 18 | Contexto metodológico |
+| 🔴 **Crítico** | 21 | Decisión central del pipeline |
+| 🟠 **Alta** | 30 | Respalda decisiones técnicas |
+| 🟡 **Media** | 24 | Contexto metodológico |
 | 🟢 **Baja** | 13 | Referencia general |
 | ⚪ **Informativa** | 6 | Documentación técnica |
 
@@ -82,8 +82,9 @@ Ver archivo completo: [`Tabla-Maestra-Papers.md`](Tabla-Maestra-Papers.md)
 | [`Tabla-Maestra-Papers.md`](Tabla-Maestra-Papers.md) | **74 referencias catalogadas con IDs, importancia y trazabilidad** |
 | [`Investigacion-P1-Software-Captura.md`](Investigacion-P1-Software-Captura.md) | App de cámara y bloqueo de sensores |
 | [`Investigacion-P2-IMU-Telemetria.md`](Investigacion-P2-IMU-Telemetria.md) | Registro IMU y estabilización |
-| [`Investigacion-P3-Protocolo-Caminata.md`](Investigacion-P3-Protocolo-Caminata.md) | ⚠️ Pendiente de ejecutar en Elicit |
+| [`Investigacion-P3-Protocolo-Caminata.md`](Investigacion-P3-Protocolo-Caminata.md) | ✅ Completado — 6 parámetros justificados con 10 papers nuevos (P69-P78) |
 | [`Investigacion-Herramientas-Motores-Busqueda.md`](Investigacion-Herramientas-Motores-Busqueda.md) | Comparativa de herramientas de búsqueda académica |
+| [`Investigacion-P4-Seleccion-Parcelas.md`](Investigacion-P4-Seleccion-Parcelas.md) | **NUEVO** — Selección de parcelas para muestreo en campo |
 | [`.specify/memory/constitution.md`](.specify/memory/constitution.md) | Constitución del proyecto v1.0.0 |
 
 ---
@@ -122,10 +123,11 @@ Ver archivo completo: [`Tabla-Maestra-Papers.md`](Tabla-Maestra-Papers.md)
 | **Constitución v1.0.0** | ✅ Completado | 5 principios + trazabilidad bibliográfica |
 | **P1 — App de Cámara** | ✅ Completado | 23 papers, justificación manual vs auto cerrada |
 | **P2 — IMU/Telemetría** | ✅ Completado | 20+ papers, gap OIS OFF cerrado |
-| **P3 — Protocolo Caminata** | ❌ Pendiente | Prompt listo para ejecutar en Elicit |
+| **P3 — Protocolo Caminata** | ✅ Completado | 10 papers nuevos (P69-P78), justificación de 6 parámetros cerrada |
 | **Pipeline** | ✅ Completado | 7 etapas con referencias y IDs |
 | **Metodología** | ✅ Completado | 13 secciones, 12 metodologías similares |
-| **Tabla Maestra** | ✅ Completado | 74 referencias con trazabilidad |
+| **Tabla Maestra** | ✅ Completado | 95 referencias con trazabilidad |
+| **P4 — Selección Parcelas** | ✅ Completado hoy | 6 papers (P79-P84), metodología de muestreo estratificado con NDVI |
 | **Validación en campo** | 🔜 Pendiente | 05/06/2026 |
 
 ---
@@ -172,4 +174,4 @@ AE Lock (exposición fija)
 
 ---
 
-*Documento generado el 05/06/2026. 74 referencias catalogadas con trazabilidad completa.*
+*Documento generado el 05/06/2026. 95 referencias catalogadas con trazabilidad completa.*

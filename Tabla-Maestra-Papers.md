@@ -89,6 +89,27 @@
 | **P66** | Mango Fruit Load Estimation Using Video Based MangoYOLO-Kalman Filter-Hungarian Algorithm | — | 2019 | *Sensors* | Video detection: **62.3%** del conteo real vs **40.2%** con foto estática. **+22% mejora** usando video en movimiento. Error doble conteo 9.9%. | P2 — Demuestra que video estabilizado supera a fotos estáticas para conteo de frutos. | 🟠 Alta | Etapa 2 — Video estabilizado para detección | Búsqueda P2 | 10.3390/s19122742 |
 | **P67** | Crop Row Video Stabilization for Agricultural Field Robotics | — | — | *MDPI Sensors* | Desplazamiento lateral suprimido: **66%** del espacio entre hileras. Desviación: ~20px (desde 93px inicial). | P2 — Justifica estabilización en agricultura con métricas cuantitativas. | 🟠 Alta | Etapa 2 — Estabilización en agricultura | Búsqueda P2 | MDPI Sensors |
 | **P68** | Lightweight GAN for Restoring Blurred Images to Enhance Citrus Detection | — | 2025 | *MDPI* | **mAP@0.5:0.95 +86.4%** tras restaurar imágenes borrosas. Recall **+76.9%**. F1 **+40.1%**. FN rate **-63.9%**. | P2 — Motion blur degrada severamente detección YOLO. Respalda necesidad de estabilización. | 🟠 Alta | Etapa 2 — Motion blur vs YOLO | Búsqueda P2 | MDPI 2025 |
+| **P69** | Fruit Detectability Analysis for Different Camera Positions in Sweet-Pepper | Hemming, J.; Ruizendaal, J.; Hofstee, J.W.; van Henten, E.J. | 2014 | *Sensors* | **Prueba 14 posiciones de cámara** con diferentes azimuth y zenith angles para medir Fruit Detectability (FD). Zenith 60° (mirando hacia arriba) dio la mejor FD. 5 posiciones combinadas alcanzaron FD=90%. | P3 — Único paper que prueba sistemáticamente múltiples ángulos de cámara para detección de frutos. Justifica ángulo 15-30° hacia arriba. | 🔴 Crítico | P3 — Ángulo de cámara óptimo | Investigacion-P3 | 10.3390/s140406032 |
+| **P70** | A Comparative Study of Fruit Detection and Counting Methods for Yield Mapping in Apple Orchards | Roy, P.; Dong, Y.; Isler, V. | 2018 | *arXiv* | **Samsung Galaxy S4** a **2 m/s** caminando. Video 30fps, 1920×1080. Cámara horizontal, un solo lado de la hilera. Yield accuracy 95.56-97.83%. | P3 — Paper que demuestra captura manual con smartphone y publica la velocidad exacta. Justifica velocidad de caminata ~1-2 m/s. | 🔴 Crítico | P3 — Velocidad de caminata, protocolo de captura con smartphone | Investigacion-P3 | arXiv:1810.09499 |
+| **P71** | Recognition and Counting of Apples in a Dynamic State Using a 3D Camera and Deep Learning Algorithms | — | 2023 | *Sensors* | **Compara 3 velocidades (0.052/0.069/0.098 m/s) × 3 ángulos (0°/15°/30°).** YOLOv7 mAP@0.5=0.905. 15° + 0.098 m/s = RMSE 1.54cm. Counting accuracy 86.6%. | P3 — Paper que combina velocidad × ángulo con métricas de detección. Justifica ángulo 15° y relación velocidad-precisión. | 🔴 Crítico | P3 — Velocidad × Ángulo combinados | Investigacion-P3 | 10.3390/s23083810 |
+| **P72** | Assessing the Performance of RGB-D Sensors for 3D Fruit Crop Canopy Characterization under Different Operating and Lighting Conditions | — | 2020 | *Sensors* | **Compara distancias 1.5m vs 2.5m** al dosel. 1.5m: 200.5% más densidad de nube de puntos. 2.5m: mejor penetración en dosel (0.922m vs 0.772m). Brillo +30.4% a 1.5m. | P3 — Comparación directa de distancia con impacto cuantitativo en calidad de datos. Justifica rango 0.8-1.5m. | 🟠 Alta | P3 — Distancia al dosel, calidad de datos | Investigacion-P3 | 10.3390/s20247072 |
+| **P73** | YOLO-CSB: Real-Time Detection of Occluded Apples for Precision Agriculture | — | 2026 | *Agronomy* | **Distancia óptima 0.8-1.5m** del dosel. mAP 93.69%. Datos recolectados mañana (9-11AM, 45%) y tarde (3-5PM, 55%). septiembre-octubre. | P3 — Distancia 0.8-1.5m validada con mAP. Justifica rango óptimo de captura. | 🟠 Alta | P3 — Distancia al dosel, horarios de captura | Investigacion-P3 | 10.3390/agronomy16030390 |
+| **P74** | Video-Based Fruit Detection and Tracking for Apple Counting | Gené-Mola, J.; Sanz-Cortiella, R.; Rosell-Polo, J.R.; et al. | 2023 | *Computers and Electronics in Agriculture* | **Compara SORT vs DeepSORT vs ByteTrack** para conteo de frutos en video. ByteTrack: **MOTA 0.682, IDF1 0.837, HOTA 0.689**. 15ms/frame vs DeepSORT 128ms. YOLOv5x. | P3 — Comparación de trackers para conteo de frutos. Justifica uso de ByteTrack. | 🔴 Crítico | P3 — Tracking MOT, estrategia anti-doble conteo | Investigacion-P3 | UPCommons |
+| **P75** | A State-of-the-Art Review of Image Motion Deblurring Techniques in Precision Agriculture | — | 2024 | *Heliyon* | **Revisión de técnicas de deblurring.** Proporciona fórmula: `desplazamiento_px ≈ (velocidad × tiempo_exposición) / distancia_focal`. Recomienda shutter ≥1/200s para compensar walking shake. Camera shake afecta severamente la precisión. | P3 — Fundamento teórico para calcular blur según velocidad de caminata. Justifica shutter speed 1/60-1/120s. | 🟠 Alta | P3 — Motion blur, shutter speed, justificación velocidad | Investigacion-P3 | Heliyon 2024 |
+| **P76** | Orchard-YOLO: A Robust Deep Learning Framework for Fruit Detection Under Complex Optical and Environmental Degradation | — | 2026 | *Photonics* | **Prueba ±50% iluminación + hasta 70% oclusión.** YOLOv13: 94.8% mAP@0.5 en condiciones normales, 61.4% en condición extrema (−50% brillo, 70% oclusión). 25 FPS en Jetson Nano. | P3 — Cuantifica el impacto de iluminación variable y oclusión en detección. Justifica horarios óptimos. | 🟠 Alta | P3 — Iluminación, horarios, oclusión | Investigacion-P3 | 10.3390/photonics13050429 |
+| **P77** | AgRowStitch: A High-fidelity Image Stitching Pipeline for Ground-based Agricultural Images | — | 2025 | *arXiv* | **iPhone 13 Pro** montado en monopod (selfie stick). Caminata manual paralela a la hilera, cámara a 1.5m de altura, ~1.5m del dosel. 4K 30fps, frames extraídos a 10fps. MAE ~20cm sobre 72m de hilera. | P3 — Metodología de captura con smartphone caminando. Distancia, altura y velocidad documentadas. | 🟡 Media | P3 — Protocolo de captura manual con smartphone | Investigacion-P3 | arXiv:2503.21990 |
+| **P78** | In-Orchard Sizing of Mango Fruit: Comparison of Machine Vision Based Methods for On-The-Go Estimation | — | 2022 | *Horticulturae* | **Velocidad ~6 km/h.** Compara YOLOv3/v4/v7 y tiny variants. Distancia cámara-fruto 1-3m. RMSE 4.7mm en longitud. 5fps. Cámara RGB-D ToF. | P3 — Velocidad de captura en movimiento + comparación de detectores. Justifica rango de distancia. | 🟡 Media | P3 — Velocidad de captura, distancia al dosel | Investigacion-P3 | 10.3390/horticulturae8121223 |
+| **P79** | Sampling Stratification Using Aerial Imagery to Estimate Fruit Load in Peach Tree Orchards | Miranda, C.; Santesteban, L.G.; Urrestarazu, J.; Loidi, M.; Royo, J.B. | 2018 | *Agriculture* | Usa **RVI (NDVI) aéreo + TCSA** para estratificar árboles con fuzzy k-means. Reduce muestra 20-35% vs aleatorio simple. 5 huertos de durazno. | P4 — Metodología de estratificación con NDVI para selección de parcelas/árboles en huertos. | 🔴 Crítico | P4 — Selección de parcelas, estratificación NDVI | Investigacion-P4 | 10.3390/agriculture8060078 |
+| **P80** | Stratified Sampling in Fruit Orchards Using Cluster-Based Ancillary Information Maps: A Comparative Analysis to Improve Yield and Quality Estimates | Uribeetxebarria, A.; Martínez-Casasnovas, J.A.; Escolà, A.; Rosell-Polo, J.R.; Arnó, J. | 2018 | *Precision Agriculture* | **NDVI estratificado** (2-3 estratos) reduce muestra **17%** vs SRS para estimación de rendimiento en durazno. ECa no mejoró. | P4 — Estratificación con NDVI para optimizar muestreo en huertos frutales. | 🟠 Alta | P4 — Selección de parcelas, NDVI como variable auxiliar | Investigacion-P4 | 10.1007/s11119-018-9619-9 |
+| **P81** | Assessing Ranked Set Sampling and Ancillary Data to Improve Fruit Load Estimates in Peach Orchards | Martínez-Casasnovas, J.A.; Uribeetxebarria, A.; Escolà, A.; Arnó, J.; Rosell-Polo, J.R. | 2019 | *Computers and Electronics in Agriculture* | **Ranked Set Sampling (RSS)** con UAV (área de copa) reduce muestra **50%** (de N=10 a N=5). R=0.85 entre área de copa y carga frutal. | P4 — RSS como método eficiente de muestreo en huertos. Respalda reducción de tamaño de muestra. | 🟠 Alta | P4 — Muestreo eficiente, tamaño de muestra | Investigacion-P4 | 10.1016/j.compag.2019.104931 |
+| **P82** | A New, Satellite NDVI-Based Sampling Protocol for Grape Maturation Monitoring | Meyers, J.M.; Dokoozlian, N.; Ryan, C.; Bioni, C.; Vanden Heuvel, J.E. | 2020 | *Remote Sensing* | **NDVI3**: 3 píxeles Landsat representando cola baja, media y alta del NDVI. Misma representatividad que 20 puntos aleatorios. Test KS. | P4 — Protocolo de muestreo basado en NDVI satelital. Aplicable a Sentinel-2 para selección de parcelas. | 🔴 Crítico | P4 — Selección de parcelas con NDVI satelital | Investigacion-P4 | 10.3390/rs12071159 |
+| **P83** | Spatial Sampling of Fruit Maturity Reduces Sampling Costs for Winegrapes in California and New York | Meyers, J.M.; Vanden Heuvel, J.E. | 2024 | *American Journal of Enology and Viticulture* | Comparación costos NDVI3 vs aleatorio (R20) vs 4 esquinas. NDVI3: **0.36-1.58 km** recorrido vs R20: **3.34-13.63 km**. Ahorro $5.54-$32.40 por evento. | P4 — Eficiencia del muestreo NDVI satelital. Respalda selección de ubicaciones representativas. | 🟠 Alta | P4 — Eficiencia de muestreo, reducción de esfuerzo | Investigacion-P4 | 10.5344/ajev.2024.23067 |
+| **P84** | Effectiveness of Management Zones Delineated from UAV and Sentinel-2 Data for Precision Viticulture Applications | — | 2024 | *Remote Sensing* | Compara **Sentinel-2 (10m) vs UAV (3-4cm)** para zonas de manejo. S2 captura las principales características de vigor. UAV da más precisión en bordes. | P4 — Validación de Sentinel-2 para zonificación de vigor. Respalda uso de imágenes S2 para estratificar parcelas. | 🟡 Media | P4 — Uso de Sentinel-2 para selección de parcelas | Investigacion-P4 | 10.3390/rs16040635 |
+| **P85** | Machine Learning Applied to Tree Crop Yield Prediction Using Field Data and Satellite Imagery: A Case Study in a Citrus Orchard | — | 2022 | *MDPI Instruments* | **Usó mean NDVI de Sentinel-2** para **50 parcelas de cítricos** (mandarina Afourer). Demostró que el NDVI por parcela mejora la predicción de rendimiento en 4%. | P4 — Valida el uso de **NDVI medio por parcela desde Sentinel-2** para caracterizar parcelas de cítricos. | 🟠 Alta | P4 — Caracterización de parcelas con NDVI Sentinel | Investigacion-P4 | 10.3390/instruments9040080 |
+| **P86** | Evaluating Sentinel-2 Red Edge for Monitoring LAI and Chlorophyll in Kinnow Mandarin Orchards | — | 2022 | *ScienceDirect* | **Evaluó índices de Red Edge (NDRE) vs NDVI** en mandarinos Kinnow con Sentinel-2. Los índices de Red Edge fueron **superiores al NDVI** para estimar LAI y clorofila. | P4 — Confirma que **NDRE es mejor que NDVI para cítricos** con Sentinel-2. Justifica uso de NDRE. | 🟠 Alta | P4 — Uso de NDRE para caracterización de cítricos | Investigacion-P4 | ScienceDirect 2022 |
+| **P87** | Citrus Orchard Mapping in Juybar, Iran: Analysis of NDVI Time Series and Feature Fusion of Multi-Source Satellite Imageries | Toosi, A. et al. | 2022 | *GIScience & Remote Sensing* | **Clasificó huertos de cítricos** con Sentinel-2 usando series temporales NDVI + machine learning. **Precisión 99.7%** (SVM). Propuso EGI (Evergreenness Index). | P4 — Demuestra que **Sentinel-2 distingue huertos de cítricos de otros cultivos** a nivel de parcela. | 🟡 Media | P4 — Clasificación de parcelas de cítricos con Sentinel-2 | Investigacion-P4 | 10.1016/j.rsase.2022.100760 |
+| **P88** | Multilevel Systematic Sampling to Estimate Total Fruit Number | Wulfsohn, D.; Aravena, F.; Potin, C.; Zamora, I.; García-Fiñana, M. | 2012 | *Precision Agriculture* | **SUR sistemático** en 14 huertos comerciales (kiwi, manzana, uva). Error **<5% en 6 huertos**, **5-10% en 5 huertos**, 13-20% en 3. Carga de trabajo 30-150 min. | P4 — Respalda el **muestreo sistemático uniforme (SUR)** para seleccionar hileras/árboles. Error <10% en 11/14 casos. | 🔴 Crítico | P4 — Selección de hileras (SUR sistemático) | Investigacion-P4 | Springer |
+| **P89** | Phenological and Biophysical Mediterranean Orchard Assessment Using Ground-Based Methods and Sentinel-2 Data | — | 2024 | *Remote Sensing* | **Seleccionaron 14 parcelas** para representar variabilidad de suelo, riego y manejo en huertos de cereza, nectarina y albaricoque. Criterios: accesibilidad + representatividad. Usaron Sentinel-2. | P4 — Ejemplo de **selección de parcelas por criterios agronómicos** (edad, variedad, manejo) complementado con Sentinel-2. | 🟡 Media | P4 — Selección de parcelas por criterios agronómicos | Investigacion-P4 | 10.3390/rs16183393 |
 
 ---
 
@@ -108,12 +129,12 @@
 ## Resumen por fuente
 
 | Fuente | Cantidad de papers |
-|---|---|
+|---|---|---|
 | **Elicit P1** (Software) | 16 |
 | **Elicit P2** (IMU) | 12 |
-| **Semantic Scholar / Web Search** (adicionales) | 26 |
+| **Semantic Scholar / Web Search** (adicionales) | 47 |
 | **Documentación técnica** | 6 |
-| **Total** | **74** |
+| **Total** | **95** |
 
 ---
 
@@ -121,11 +142,13 @@
 
 | Nivel | Cantidad | IDs |
 |---|---|---|
-| **🔴 Crítico** | 16 | P11, P13, P22, P23, P25, P27, P28, P31, P37, P40, P43, P57, P58, P64 |
-| **🟠 Alta** | 21 | P10, P12, P18, P24, P26, P34, P35, P41, P42, P47, P49, P51, P55, P59, P60, P61, P62, P65, P66, P67, P68 |
-| **🟡 Media** | 18 | P03, P29, P30, P32, P33, P36, P38, P39, P44, P45, P46, P48, P50, P53, P54, P56, P63 |
+| **🔴 Crítico** | 21 | P11, P13, P22, P23, P25, P27, P28, P31, P37, P40, P43, P57, P58, P64, P69, P70, P71, P74, P79, P82, P88 |
+| **🟠 Alta** | 30 | P10, P12, P18, P24, P26, P34, P35, P41, P42, P47, P49, P51, P55, P59, P60, P61, P62, P65, P66, P67, P68, P72, P73, P75, P76, P80, P81, P83, P85, P86 |
+| **🟡 Media** | 24 | P03, P29, P30, P32, P33, P36, P38, P39, P44, P45, P46, P48, P50, P53, P54, P56, P63, P77, P78, P84, P87, P89 |
 | **🟢 Baja** | 13 | P01, P02, P04, P05, P06, P07, P08, P09, P14, P15, P16, P17, P19, P20, P21, P52 |
 | **⚪ Informativa** | 6 | D1, D2, D3, D4, D5, D6 |
+
+**Total: 95 referencias** (89 papers académicos + 6 documentación técnica)
 
 ---
 
@@ -134,11 +157,14 @@
 | ID | Paper | Veces referenciado | En |
 |---|---|---|---|
 | P25 | Fan et al. (2025) — Sampling rate IMU | 3 archivos | P2, Pipeline, Metodologia |
-| P28 | Kuznetsova et al. (2020) — Apple distances | 2 archivos | Pipeline, Metodologia |
-| P27 | Ramos Giraldo et al. (2017) — Coffee + IMU | 2 archivos | P1, Metodologia |
+| P28 | Kuznetsova et al. (2020) — Apple distances | 3 archivos | Pipeline, Metodologia, P3 |
+| P27 | Ramos Giraldo et al. (2017) — Coffee + IMU | 3 archivos | P1, Metodologia, P3 |
 | P43 | Gašparović — Gimbal stability | 2 archivos | Pipeline, Metodologia |
 | P22 | Arslan et al. (2024) — IMU deblurring | 2 archivos | P2, Pipeline |
 | P13 | Li et al. (2025) — Visual-Inertial 47.8% SSIM | 2 archivos | P2, Pipeline |
+| P66 | MangoYOLO — Video 62% vs dual 40% | 2 archivos | P2, P3 |
+| P68 | Citrus GAN — mAP drop 86.4% | 2 archivos | P2, P3 |
+| P47 | FruitSize — Ángulo <14°, distancia | 2 archivos | Metodologia, P3 |
 
 ---
 
@@ -242,7 +268,44 @@
 ### Investigación P3 — Protocolo Caminata (contexto general)
 | ID | Paper | Importancia |
 |---|---|---|
-| P28-P39, P44-P45 | Papers distancia/velocidad/ángulo | 🟡 Media a 🔴 Crítico |
+| P27 | Ramos Giraldo — Coffee + IMU (3 cm/s, 11.3°) | 🔴 Crítico |
+| P28 | Kuznetsova — Apple distances 0.2-2.0m | 🔴 Crítico |
+| P29 | Pear dataset — 4 horarios | 🟡 Media |
+| P30 | Cocoa dataset — 8AM-4PM, zigzag | 🟡 Media |
+| P31 | OrangeYolo — Velocidad 2 m/s | 🔴 Crítico |
+| P37 | Apple Redmi Note 7 — Distancia 0.3-1.5m | 🔴 Crítico |
+| P38 | DHN-YOLO fresas — 50-80cm, ángulo 45° | 🟡 Media |
+| P39 | Hawthorn detection — 3 ángulos, 3 luces | 🟡 Media |
+| P44 | EMA-YOLO — Distancias comparadas | 🟡 Media |
+| P45 | Apple MSX — Ángulo óptimo -16° | 🟡 Media |
+| P47 | FruitSize — Ángulo <14°, distancia 120-300mm | 🟠 Alta |
+| P66 | MangoYOLO — Video 62% vs dual 40% | 🟠 Alta |
+| P68 | Citrus GAN — mAP drop 86.4% por blur | 🟠 Alta |
+| **P69** | **Sweet-Pepper — 14 posiciones ángulo (NUEVO)** | **🔴 Crítico** |
+| **P70** | **Apple Yield Mapping — Samsung S4 a 2 m/s (NUEVO)** | **🔴 Crítico** |
+| **P71** | **Apple 3D Camera — 3 veloc. × 3 ángulos (NUEVO)** | **🔴 Crítico** |
+| **P72** | **RGB-D Sensors — 1.5m vs 2.5m distancia (NUEVO)** | **🟠 Alta** |
+| **P73** | **YOLO-CSB — 0.8-1.5m distancia (NUEVO)** | **🟠 Alta** |
+| **P74** | **Gené-Mola Video — ByteTrack MOTA 0.682 (NUEVO)** | **🔴 Crítico** |
+| **P75** | **Motion Blur Review — Fórmula desplazamiento (NUEVO)** | **🟠 Alta** |
+| **P76** | **Orchard-YOLO — ±50% iluminación (NUEVO)** | **🟠 Alta** |
+| **P77** | **AgRowStitch — iPhone 13 caminata manual (NUEVO)** | **🟡 Media** |
+| **P78** | **Mango sizing — 6 km/h, 1-3m (NUEVO)** | **🟡 Media** |
+
+### Investigación P4 — Selección de Parcelas y Muestreo
+| ID | Paper | Importancia | ¿Qué justifica? |
+|---|---|---|---|
+| P79 | Miranda et al. — Stratification NDVI peach | 🔴 Crítico | Principio de estratificación por NDVI (imagen aérea 0.25m) |
+| P80 | Uribeetxebarria et al. — Stratified sampling orchards | 🟠 Alta | NDVI como variable auxiliar para estratificar (imagen aérea 0.25m) |
+| P81 | Martínez-Casasnovas et al. — RSS peach orchards | 🟠 Alta | Ranked Set Sampling con UAV |
+| P82 | Meyers et al. — Satellite NDVI sampling | 🔴 Crítico | NDVI3: selección por cuantiles NDVI satelital (Landsat 30m, bloques >10ha) |
+| P83 | Meyers & Vanden Heuvel — Sampling costs | 🟠 Alta | Eficiencia del muestreo NDVI satelital |
+| P84 | UAV vs Sentinel-2 management zones | 🟡 Media | Sentinel-2 captura zonas principales de vigor (10m) |
+| **P85** | **Morocco citrus — yield prediction (NUEVO)** | **🟠 Alta** | **Mean NDVI Sentinel-2 para 50 parcelas de cítricos** |
+| **P86** | **Kinnow mandarin Red Edge (NUEVO)** | **🟠 Alta** | **NDRE > NDVI para cítricos con Sentinel-2** |
+| **P87** | **Citrus orchard mapping Iran (NUEVO)** | **🟡 Media** | **Sentinel-2 clasifica cítricos con 99.7% precisión** |
+| **P88** | **Wulfsohn et al. — SUR sampling (NUEVO)** | **🔴 Crítico** | **SUR sistemático: error <10% en 11/14 huertos** |
+| **P89** | **Mediterranean orchard assessment (NUEVO)** | **🟡 Media** | **Selección de parcelas por criterios agronómicos** |
 
 ### Metodologías Similares — Referencia Comparativa
 | ID | Paper | Importancia |
