@@ -80,9 +80,9 @@
 | **P57** | Overcurrent-driven LEDs for Consistent Image Colour and Brightness in Agricultural Machine Vision | — | 2021 | *Computers and Electronics in Agriculture* | **85% reducción** variación HSV con LED fijo vs auto-exposición. Error motion blur 7mm→1mm a 7km/h. Auto-exposición falla catastróficamente con sol frontal. | P1 — Demuestra que parámetros fijos + iluminación controlada eliminan variabilidad. Respalda fijar ISO/shutter. | 🔴 Crítico | Etapa 1 — App de Cámara (ISO/shutter fijo), Etapa 6 — Iluminación | Búsqueda P1 | ScienceDirect |
 | **P58** | Land-based Crop Phenotyping by Image Analysis: Consistent Canopy Characterization from Inconsistent Field Illumination | — | 2018 | *Plant Methods* | **Error MSE: 1.57 (manual) vs 4.26 (auto)** bajo iluminación cambiante. Exposición manual + corrección de color es superior. | P1 — Comparación directa manual vs auto. Manual es 2.7x más consistente. | 🔴 Crítico | Etapa 1 — App de Cámara (AE Lock, exposición manual) | Búsqueda P1 | Springer |
 | **P59** | A Robust Illumination-Invariant Camera System for Agricultural Applications | — | 2021 | *arXiv* | Redes entrenadas con imágenes consistentes requieren **4x menos datos**. Faster-RCNN: AP 0.71 con iluminación controlada vs casi 0 con luz natural extrema. | P1 — Parámetros fijos reducen datos necesarios para entrenar. Respalda bloqueo de exposición. | 🟠 Alta | Etapa 1 — App de Cámara (consistencia de captura) | Búsqueda P1 | arXiv:2101.02190 |
-| **P60** | Optimizing Image Acquisition Systems for Autonomous Driving (CNN + Exposure) | — | 2018 | *Stanford / Google Research* | **~20% caída de precisión** en CNN cuando hay sesgo de exposición. Cámaras con parámetros inconsistentes degradan generalización de redes. | P1 — Evidencia de que exposición inconsistente degrada CNN. Respalda AE Lock. | 🟠 Alta | Etapa 1 — App de Cámara (AE Lock) | Búsqueda P1 | Stanford |
+| **P60** | Optimizing Image Acquisition Systems for Autonomous Driving (CNN + Exposure) | — | 2018 | *Stanford / Google Research* | El paper demuestra que redes entrenadas con exposiciones específicas no generalizan bien a exposiciones diferentes. Las CNN son asimétricas: manejan mejor sub-exposición que sobre-exposición. Entrenar con mezcla de exposiciones ayuda pero reduce precisión óptima. ⚠️ **NOTA**: La cifra de "~20% caída de precisión" no pudo ser verificada en el paper original encontrado. El paper SÍ demuestra que exposiciones subóptimas degradan significativamente CNNs, pero el valor exacto requiere verificación. | P1 — Evidencia de que exposición inconsistente degrada CNN. Respalda AE Lock. | 🟡 Media | Etapa 1 — App de Cámara (AE Lock) | Búsqueda P1 | Stanford 2018 |
 | **P61** | Stabilizing and Accelerating Autofocus with Expert Trajectory Regularized Deep RL | — | 2025 | *CVPR* | Focus hunting (FH) causa que el lente oscile repetidamente creando **inestabilidad en video**. FH reduce nitidez y cambia el FoV. | P1 — Documenta que el focus hunting es un problema real. Respalda AF Lock. | 🟠 Alta | Etapa 1 — App de Cámara (AF Lock) | Búsqueda P1 | CVPR 2025 |
-| **P62** | A Calibration Method for Smartphone Camera Photoplethysmography (Camera2 API) | — | 2023 | *Nature / PMC* | Tone mapping automático aplica **transformaciones no lineales irreversibles**. Camera2 API permite desactivarlo. WB lock esencial para color consistente. | P1 — Valida Camera2 API para control manual en investigación. Respalda uso de Camera2 API + WB Lock. | 🟠 Alta | Etapa 1 — App de Cámara (Camera2 API, WB Lock) | Búsqueda P1 | PMC |
+| **P62** | A Calibration Method for Smartphone Camera Photoplethysmography (Camera2 API) | — | 2023 | *Frontiers in Digital Health* (PMC10705321) | Tone mapping automático aplica **transformaciones no lineales irreversibles** ("cannot be reversed in post processing"). Camera2 API permite configurar tone mapping lineal. **74% menor MAE** con calibración. WB lock esencial para color consistente. | P1 — Valida Camera2 API para control manual en investigación. El tone mapping lineal vía Camera2 API logra 74% menos error. Respalda Camera2 API + WB Lock. | 🔴 Crítico | Etapa 1 — App de Cámara (Camera2 API, WB Lock, tone mapping) | Búsqueda P1 | 10.3389/fdgth.2023.1301019 |
 | **P63** | Kiwifruit Detection in Orchard Conditions Using a FCN with Preprocessing | — | 2020 | *arXiv* | Sin preprocesamiento: **F1 0.82** en imágenes normales vs **0.13** en imágenes con glare. Luz no controlada destruye detección. | P1 — Demuestra que condiciones de luz adversas degradan severamente la detección. | 🟡 Media | Etapa 1 — Condiciones de captura | Búsqueda P1 | arXiv:2006.11729 |
 | **P64** | DeepOIS: Gyroscope-Guided Deep Optical Image Stabilizer Compensation | — | 2021 | *arXiv* | **OIS interfiere con estabilización por giroscopio.** Error alineación: 0.688 (sin OIS) vs 1.038 (con OIS) — **50% peor**. "OIS terminates the possibility of image registration by gyros." | P2 — Evidencia directa de que OIS interfiere con Gyroflow. Justifica regla OIS OFF. | 🔴 Crítico | Etapa 2 — Regla OIS OFF | Búsqueda P2 | arXiv:2101.11183 |
 | **P65** | Image Stabilization Influence on Photogrammetric Accuracy | — | 2022 | *ISPRS* | **IS debe desactivarse** para modelado 3D. Incertidumbre en parámetros **hasta 300% mayor** con IS activado. Error de reproyección **4x mayor**. | P2 — Respalda desactivar OIS desde fotogrametría. Corrobora regla OIS OFF. | 🟠 Alta | Etapa 2 — Regla OIS OFF | Búsqueda P2 | ISPRS |
@@ -115,9 +115,22 @@
 | **P92** | Delineating Citrus Management Zones Using Spatial Interpolation and UAV-Based Multispectral Approaches | Longo-Minnolo, G. et al. | 2023 | *Precision Agriculture* | **Delineó zonas de manejo en cítricos** con NDVI (K-means clustering). Encontró que **3-4 zonas** son óptimas y que zonas con diferente vigor mostraron diferencias estadísticamente significativas. | P4 — **Valida en cítricos** que dividir por vigor captura diferencias reales. Respaldo directo al enfoque de estratificación. | 🟠 Alta | P4 — Zonas de manejo en cítricos con NDVI, respaldo a estratificación | Investigacion-P4 | Springer |
 | **P93** | UAV-Based High Throughput Phenotyping in Citrus Utilizing Multispectral Imaging and Artificial Intelligence | Ampatzidis, Y.; Partel, V. | 2019 | *Remote Sensing* | **Usó NDVI + YOLOv3** para fenotipado de cítricos desde UAV. NDVI correlaciona bien con tamaño de copa y sanidad. **99.9% precisión** en detección de árboles. | P4 — **Conecta NDVI + YOLO + cítricos**. Confirma que NDVI es buen predictor de vigor en cítricos. | 🟠 Alta | P4 — Correlación NDVI-vigor en cítricos, contexto YOLO | Investigacion-P4 | 10.3390/rs11040410 |
 | **P94** | Sampling Strategies for Soil Property Mapping Using Multispectral Sentinel-2 and Hyperspectral EnMAP Satellite Data | Castaldi, F.; Chabrillat, S.; van Wesemael, B. | 2019 | *Remote Sensing* | **Probó estrategias de muestreo** con Sentinel-2. S2 (10m) provee resolución suficiente para crear zonas de manejo. Kennard-Stones con S2 dio nRMSE 8.7-9.2%. | P4 — **Valida que Sentinel-2 (10m) tiene resolución adecuada** para muestreo agrícola a escala de parcela. | 🟡 Media | P4 — Resolución de S2-10m para muestreo agrícola | Investigacion-P4 | 10.3390/rs11030309 |
-
----
-
+| **P95** | Impact of ISP Tuning on Object Detection | — | 2023 | *MDPI J. Imaging* 9(12), 260 | Contraste, gamma y saturación (componentes del ISP automático) causan **degradación significativa** en YOLOv5/v8, Faster R-CNN, RT-DETR. La variación de ISP afecta **desproporcionadamente a objetos pequeños**. La mayoría de errores son **falsos negativos** (objetos no detectados). | P1 — Demuestra que el pipeline ISP automático degrada la detección YOLO. Respalda el uso de Camera2 API para desactivar procesamiento automático y usar tone mapping lineal. | 🟠 Alta | Etapa 1 — ISP tuning, degradación de detección por procesamiento automático | Investigacion-P1 | 10.3390/jimaging9120260 |
+| **P96** | Why is the Video Analytics Accuracy Fluctuating, and What Can We Do About It? (Camera as Unintentional Adversary) | — | 2022 | *ECCV* | La cámara actúa como **"unintentional adversary"**: cambios automáticos de parámetros causan **13-14% fluctuación** en detección en escenas estáticas. Transfer-learning redujo errores de tracking **~40%**. Ground truth 29 tracks → modelo original creó **157 track-IDs** (5.4x falsos). | P1 — Evidencia directa de que los parámetros automáticos de cámara degradan la detección y tracking. Respalda el bloqueo de AF/AE/WB. | 🔴 Crítico | Etapa 1 — Bloqueo de parámetros automáticos, impacto en tracking | Investigacion-P1 | arXiv:2208.12644 |
+| **P97** | ISP-less Low-Power Computer Vision (RAW Detection) | — | 2022 | *arXiv* | Detección en **dominio RAW supera a RGB procesado por ISP** en 7.1% precisión. Aprendizaje de gamma correction en RAW supera baseline RGB. "Freedom from the nonlinear distortions introduced by the ISP pipeline" (RAWild, 2026). | P1 — Confirma que el procesamiento ISP (tone mapping, gamma) pierde información útil para detección. Respalda desactivar procesamiento automático y usar RAW/tone mapping lineal. | 🟠 Alta | Etapa 1 — RAW vs ISP, calidad de datos de entrenamiento, tone mapping | Investigacion-P1 | arXiv:2210.05451 |
+| **P98** | AdaptiveISP: Learning an Adaptive Image Signal Processor for Object Detection | — | 2024 | *NeurIPS* | ISP puede optimizarse específicamente para detección. AdaptiveISP logra **mAP@0.5 de 71.4 vs baseline 55.6 (28% mejora)**. Solo algunas etapas ISP son útiles para detección — el pipeline default es **sub-óptimo** para visión computacional. | P1 — Confirma que el ISP por defecto NO es óptimo para detección. Respalda desactivar procesamiento automático y usar control manual vía Camera2 API. | 🟠 Alta | Etapa 1 — ISP sub-óptimo para detección, RAW vs procesado | Investigacion-P1 | arXiv:2410.22939 |
+| **P99** | Assessing Nutritional Pigment Content of Green and Red Leafy Vegetables via Digital Image Analysis | — | 2024 | *PMC* (12057810) | Usa **Open Camera v1.52** en Redmi Note 7 Pro. **ISO=200 fijo, shutter=1/100s, AF deshabilitado, compensación de exposición deshabilitada**. Razón explícita: "to ensure uniformity across images". Iluminación LED controlada 4000K a 50cm. | P1 — **Único paper encontrado que documenta Open Camera** con configuración detallada y justificación explícita. Matiza el claim de que "ningún paper documenta apps de cámara". | 🟡 Media | Etapa 1 — Open Camera, justificación de parámetros fijos en investigación | Investigacion-P1 | PMC12057810 |
+| **P100** | Combined Electronic Image Stabilization and Optical Image Stabilization (Qualcomm Patent) | — | 2024 (granted) | *US Patent US20200412954A1* | OIS+EIS combinados exitosamente con realimentación de sensores Hall para posición del lente. EIS filter se ajusta dinámicamente según posición OIS. | P2 — **Contradice** la afirmación "OIS debe estar OFF" para sistemas con acceso a posición del lente. Confirma la regla para sensores externos sin Hall feedback. | 🟠 Alta | Etapa 2 — OIS OFF (matiz), sistemas modernos OIS+EIS | Investigacion-P2 (Contradicciones) | US Patent |
+| **P101** | HyperOIS: Advanced OIS and OIS-EIS Cooperation in Smartphone Cameras | — | 2024 | *IEEE Trans. Consumer Electronics* (10.1109/TCE.2024.3369029) | OIS avanzado integrado con plataforma smartphone. SR -34.37dB a -26.90dB. Xiaomi 14 blur 39.17μm en 4K. Demuestra que OIS moderno no requiere desactivación para estabilización digital. | P2 — **Contradice parcialmente** la regla OIS OFF. OIS moderno puede integrarse sin conflicto. | 🟡 Media | Etapa 2 — OIS OFF (contexto de sistemas modernos) | Investigacion-P2 (Contradicciones) | 10.1109/TCE.2024.3369029 |
+| **P102** | In-Shoe System for Gait Monitoring — Effects of Sampling Rate | Torun et al. | 2021 | *Sensors* (DOI: 10.3390/s21082869) | **100 Hz inadecuado** para parámetros espaciales de marcha. Useful gait content hasta 120 Hz. Identifica optimal sampling a **250 Hz**. Aliasing afecta integración de señales para stride length y velocidad. | P2 — **Contradice** la suficiencia de 100 Hz para análisis de marcha. **No aplica a tesis** porque no estimamos parámetros espaciales sino orientación para sincronización. | 🟡 Media | Etapa 3 — Logging IMU (contexto de limitación de 100 Hz) | Investigacion-P2 (Contradicciones) | 10.3390/s21082869 |
+| **P103** | FEGW-YOLO: Feature-Complexity-Guided Lightweight Framework | — | 2026 | *PMC* (PMC12944136) | YOLOv8n retiene **71.9% mAP@0.5** a blur severo (kernel=11). FEGW-YOLO retiene 80.1%. Degradación de solo ~21.4% vs el 86.4% reportado por Citrus GAN [P68]. | P2 — **Contradice la magnitud** de degradación por blur (86.4%). Degradación real ≤50% en condiciones extremas. | 🟠 Alta | Etapa 2 — Motion blur + YOLO (matiz de magnitud) | Investigacion-P2 (Contradicciones) | PMC12944136 |
+| **P104** | Quantization Robustness to Input Degradations for Object Detection | — | 2025 | *arXiv* (arXiv:2508.19600) | Medium blur causa solo **11-15% mAP relativo drop** en YOLOv12. Modelos cuantizados INT8 son más robustos que FP32 a degradación. | P2 — **Contradice** degradación severa por blur. Degradación moderada (11-15%) en blur medio. | 🟡 Media | Etapa 2 — Motion blur + YOLO (contexto adicional) | Investigacion-P2 (Contradicciones) | arXiv:2508.19600 |
+| **P105** | A Novel Knowledge Distillation Framework for Small Object Detection in Blurry Environments | — | 2024 | *Springer* (DOI: 10.1007/s40747-024-01676-w) | Al 100% de velocidad de motion, YOLOv8 pierde solo **4.6% mAP@0.5**. Con knowledge distillation: solo **2.5% drop**. | P2 — **Contradice fuertemente** la degradación extrema. Degradación mínima (2.5-4.6%) para objetos pequeños en blur. | 🟠 Alta | Etapa 2 — Motion blur + YOLO (evidencia de degradación moderada) | Investigacion-P2 (Contradicciones) | 10.1007/s40747-024-01676-w |
+| **P106** | Delving into YOLO Object Detection Models: Insights into Adversarial Robustness | — | 2025 | *MDPI Electronics* (DOI: 10.3390/electronics14081624) | YOLOv4 tiene MEJOR robustez a motion blur que YOLOv7/v9/v11. YOLOv4 pierde ~15%, YOLOv11 pierde ~25%. Versiones nuevas NO son más robustas contra blur. | P2 — **Contradice** que versiones recientes de YOLO sean inherentemente más robustas a blur. Soporta probar YOLOv4/v8/v11. | 🟠 Alta | Etapa 2 — Motion blur + YOLO, Etapa 7 — Selección de modelo YOLO | Investigacion-P2 (Contradicciones) | 10.3390/electronics14081624 |
+| **P107** | Deep Online Fused Video Stabilization | Shi, Z.; Shi, F.; Lai, W.; Liang, C.; Liang, Y. | 2022 | *WACV 2022* (arXiv:2102.01279) | **Primer híbrido IMU+deep learning.** Gyro-only: Stability 0.846. Fused (gyro+optical flow): **0.853**. Mayor FOV (0.906 vs 0.827). Demuestra que IMU puro es superado por métodos híbridos. | P2 — **Contradice** la superioridad de IMU puro. Respalda el enfoque híbrido de Gyroflow. | 🟠 Alta | Etapa 2 — Estabilización (IMU+deep learning supera a IMU puro) | Investigacion-P2 (Contradicciones) | arXiv:2102.01279 |
+| **P108** | RStab: 3D Multi-frame Fusion for Video Stabilization | Peng, Z. et al. | 2024 | *CVPR 2024* (DOI: 10.1109/CVPR52733.2024.00710) | **SOTA en estabilización.** Cropping Ratio=1.00 (full-frame). Stability 0.92 vs gyro-only ~0.83. Deep learning 3D supera ampliamente a IMU puro. | P2 — **Contradice** la afirmación "IMU supera a óptica". Deep learning es SOTA actual. | 🟠 Alta | Etapa 2 — Estabilización (contexto SOTA, no usado en tesis por costo computacional) | Investigacion-P2 (Contradicciones) | 10.1109/CVPR52733.2024.00710 |
+| **P109** | Let's Roll: A Synthetic and Real Dataset for Pedestrian Detection Across Different Shutter Types | — | 2024 | *arXiv* (arXiv:2309.08136) | **RS correction NO necesaria** para detección de objetos a IoU≥0.5. A IoU≥0.5:0.95, discrepancia llega a 24% (bounding box positioning, no detección). Modelos pueden aprender a compensar RS. | P2 — **Contradice** la necesidad de rolling shutter correction para detección. Podría desactivarse en Gyroflow sin pérdida de mAP. | 🟠 Alta | Etapa 2 — Rolling shutter correction (beneficio negligible para detección) | Investigacion-P2 (Contradicciones) | arXiv:2309.08136 |
+ 
 ## Papers de documentación técnica (no académicos)
 
 | ID | Nombre | Tipo | Contexto | Importancia | Justifica a | Link |
@@ -128,8 +141,8 @@
 | D4 | OpenCamera Sensors (GitHub) | Repositorio open-source | Fork con sincronización video-IMU nativa | ⚪ Informativa | Etapa 4 — Sincronización Video-IMU | https://github.com/prime-slam/opencamera-sensors |
 | D5 | Gyroflow GitHub | Repositorio open-source | 8.9k stars, 40+ contribuidores, 24 releases | ⚪ Informativa | Etapa 2 — Estabilización, Etapa 6 — Pre-procesamiento | https://github.com/gyroflow/gyroflow |
 | D6 | Object recognition + IMU (GitHub) | Repositorio open-source | Kalman Filter + IoU con IMU para post-procesar detecciones YOLO | ⚪ Informativa | Pipeline MOT (post-procesamiento) | https://github.com/zhouzypaul/object-recognition-imu |
-
----
+| D7 | Gyroflow Plugins (GitHub) | Repositorio open-source | Plugins OpenFX (DaVinci Resolve), Adobe, frei0r para Gyroflow | ⚪ Informativa | Etapa 6 — Pre-procesamiento (Gyroflow plugins) | https://github.com/gyroflow/gyroflow-plugins |
+| D8 | TehnoBlog — Video Stabilization Comparison | Blog técnico | Comparativa DaVinci Resolve vs Adobe Premiere vs VirtualDub Deshaker. Ninguna herramienta es consistentemente superior. Gyroflow no incluido en comparativa. | ⚪ Informativa | Etapa 2 — Contexto de alternativas de estabilización | https://tehnoblog.org/video-stabilization-comparison-davinci-resolve-vs-adobe-premiere-vs-virtualdub-deshaker/ |
 
 ## Resumen por fuente
 
@@ -137,9 +150,10 @@
 |---|---|---|
 | **Elicit P1** (Software) | 16 |
 | **Elicit P2** (IMU) | 12 |
-| **Semantic Scholar / Web Search** (adicionales) | 52 |
-| **Documentación técnica** | 6 |
-| **Total** | **100** |
+| **Investigación contradicciones P2** (nuevos, 2025) | 10 |
+| **Semantic Scholar / Web Search** (adicionales) | 57 |
+| **Documentación técnica** | 8 |
+| **Total** | **117** |
 
 ---
 
@@ -147,13 +161,13 @@
 
 | Nivel | Cantidad | IDs |
 |---|---|---|
-| **🔴 Crítico** | 22 | P11, P13, P22, P23, P25, P27, P28, P31, P37, P40, P43, P57, P58, P64, P69, P70, P71, P74, P79, P82, P88, **P91** |
-| **🟠 Alta** | 33 | P10, P12, P18, P24, P26, P34, P35, P41, P42, P47, P49, P51, P55, P59, P60, P61, P62, P65, P66, P67, P68, P72, P73, P75, P76, P80, P81, P83, P85, P86, **P90**, **P92**, **P93** |
-| **🟡 Media** | 26 | P03, P29, P30, P32, P33, P36, P38, P39, P44, P45, P46, P48, P50, P53, P54, P56, P63, P77, P78, P84, P87, P89, **P94** |
-| **🟢 Baja** | 13 | P01, P02, P04, P05, P06, P07, P08, P09, P14, P15, P16, P17, P19, P20, P21, P52 |
-| **⚪ Informativa** | 6 | D1, D2, D3, D4, D5, D6 |
+| **🔴 Crítico** | 24 | P11, P13, P22, P23, P25, P27, P28, P31, P37, P40, P43, P57, P58, P62, P64, P69, P70, P71, P74, P79, P82, P88, P91, **P96** |
+| **🟠 Alta** | 42 | P10, P12, P18, P24, P26, P34, P35, P41, P42, P47, P49, P51, P55, P59, P61, P65, P66, P67, P68, P72, P73, P75, P76, P80, P81, P83, P85, P86, P90, P92, P93, **P95**, **P97**, **P98**, **P100**, **P103**, **P105**, **P106**, **P107**, **P108**, **P109** |
+| **🟡 Media** | 31 | P03, P29, P30, P32, P33, P36, P38, P39, P44, P45, P46, P48, P50, P53, P54, P56, P60, P63, P77, P78, P84, P87, P89, P94, **P99**, **P101**, **P102**, **P104** |
+| **🟢 Baja** | 12 | P01, P02, P04, P05, P06, P07, P08, P09, P14, P15, P16, P17, P19, P20, P21, P52 |
+| **⚪ Informativa** | 8 | D1, D2, D3, D4, D5, D6, D7, D8 |
 
-**Total: 100 referencias** (94 papers académicos + 6 documentación técnica)
+**Total: 117 referencias** (109 papers académicos + 8 documentación técnica)
 
 ---
 
@@ -181,14 +195,19 @@
 | P40 | Kurtser et al. — FNF exposición fija | 🔴 Crítico |
 | P57 | LEDs — 85% menos variación HSV con exposición fija | 🔴 Crítico |
 | P58 | Phenotyping — Manual MSE 1.57 vs Auto 4.26 | 🔴 Crítico |
+| P62 | Camera2 API — Tone mapping irreversible. 74% menor MAE con lineal | 🔴 Crítico |
+| P96 | ECCV 2022 — Cámara como "unintentional adversary": 13-14% fluctuación | 🔴 Crítico |
 | P41 | ICNet — Compensación de iluminación | 🟠 Alta |
 | P49 | Rançon et al. — Flash xenon + obturador 250µs | 🟠 Alta |
 | P55 | Rice GMC — ISO=25 fijo, shutter=1/400s | 🟠 Alta |
 | P59 | Illumination-Invariant — 4x menos datos con imágenes consistentes | 🟠 Alta |
-| P60 | Stanford CNN — ~20% caída precisión con sesgo exposición | 🟠 Alta |
 | P61 | CVPR 2025 — Focus hunting documentado | 🟠 Alta |
-| P62 | Camera2 API — Tone mapping irreversible en auto | 🟠 Alta |
+| P95 | ISP Tuning — Contraste/gamma/saturación degradan YOLOv5/v8 | 🟠 Alta |
+| P97 | RAW Detection — 7.1% más precisión en RAW vs ISP-processed | 🟠 Alta |
+| P98 | AdaptiveISP — ISP default es sub-óptimo para detección (28% mejora) | 🟠 Alta |
+| P60 | Stanford CNN — Exposición variable degrada CNN (claim ~20% no verificado) | 🟡 Media |
 | P63 | Kiwifruit glare — F1 0.82→0.13 con luz no controlada | 🟡 Media |
+| P99 | Open Camera v1.52 documentado en PMC12057810 (2024) | 🟡 Media |
 | D1  | Open Camera Help | ⚪ Informativa |
 
 ### Etapa 2 — Estabilización (Gimbal + Gyroflow)
@@ -206,22 +225,41 @@
 | P66 | MangoYOLO — video tracking +22% vs fotos | 🟠 Alta |
 | P67 | Crop row — 66% supresión desplazamiento | 🟠 Alta |
 | P68 | Citrus GAN — 86.4% mAP drop por blur | 🟠 Alta |
+| **P100** | **Qualcomm Patent — OIS+EIS combinados con Hall sensor** | **🟠 Alta** |
+| **P103** | **FEGW-YOLO — solo 21.4% drop a blur severo** | **🟠 Alta** |
+| **P105** | **Knowledge Distillation — solo 2.5% drop al 100% velocidad** | **🟠 Alta** |
+| **P106** | **MDPI Electronics — YOLOv4 más robusto a blur que v8-v11** | **🟠 Alta** |
+| **P107** | **DeepFused — Hybrid IMU+DL supera a IMU puro (0.853 vs 0.846)** | **🟠 Alta** |
+| **P108** | **RStab CVPR 2024 — SOTA estabilización 0.92 (deep learning)** | **🟠 Alta** |
+| **P109** | **"Let's Roll" — RS correction NO necesaria para detección** | **🟠 Alta** |
+| P101 | HyperOIS — OIS avanzado integrado | 🟡 Media |
+| P102 | Torun et al. — 100 Hz inadecuado para parámetros espaciales | 🟡 Media |
+| P104 | Quantization Study — 11-15% mAP drop por blur medio | 🟡 Media |
 | D2  | Gyroflow Documentation | ⚪ Informativa |
 | D5  | Gyroflow GitHub | ⚪ Informativa |
+| D7  | Gyroflow Plugins GitHub | ⚪ Informativa |
+| D8  | TehnoBlog — Comparativa estabilización | ⚪ Informativa |
 
 ### Regla OIS OFF (sub-sección crítica de Etapa 2)
 | ID | Paper | Importancia |
 |---|---|---|
 | P64 | DeepOIS — OIS interfiere 50% peor alineación | 🔴 Crítico |
 | P65 | ISPRS — IS 300% peor incertidumbre, 4x reproyección | 🟠 Alta |
+| **P100** | **Qualcomm Patent — OIS+EIS combinados CON Hall sensor** | **🟠 Alta (matiz)** |
+| **P101** | **HyperOIS — OIS moderno compatible con procesamiento digital** | **🟡 Media (matiz)** |
 | D2  | Gyroflow Docs — OIS debe estar OFF | ⚪ Informativa |
+
+> **Veredicto final:** La regla "OIS OFF" se mantiene para nuestro pipeline (Sensor Logger externo sin acceso a Hall sensor). En sistemas con realimentación de posición de lente, OIS no necesita desactivarse. [Ver sección de Contradicciones en Investigacion-P2].
 
 ### Etapa 3 — Logging IMU
 | ID | Paper | Importancia |
 |---|---|---|
-| P25 | Fan et al. — Sampling rate 100Hz | 🔴 Crítico |
+| P25 | Fan et al. — Sampling rate 100Hz para orientación en walking | 🔴 Crítico |
 | P23 | Choi — Sensor Logger | 🔴 Crítico |
+| **P102** | **Torun et al. — 100 Hz inadecuado para parámetros espaciales (250 Hz óptimo)** | **🟡 Media — No aplica a tesis** |
 | D3  | Sensor Logger Official Site | ⚪ Informativa |
+
+> **Nota:** P102 (Torun 2021) contradice la suficiencia de 100 Hz para análisis de marcha espacial, pero NO aplica a nuestro uso (orientación para sincronización video-IMU).
 
 ### Etapa 4 — Sincronización Video-IMU
 | ID | Paper | Importancia |
@@ -237,14 +275,19 @@
 | P03 | Zhao et al. — Calibración binocular | 🟡 Media |
 | P47 | Wang et al. — FruitSize control calidad | 🟠 Alta |
 
-### Etapa 6 — Pre-procesamiento (Deblurring + Frame Selection)
+### Etapa 6 — Pre-procesamiento (Deblurring + Frame Selection + Gyroflow)
 | ID | Paper | Importancia |
 |---|---|---|
 | P22 | Arslan et al. — IMU deblurring 5% PSNR | 🔴 Crítico |
 | P26 | Bell et al. — Gyroflow foundation | 🟠 Alta |
 | P49 | Rançon et al. — Iluminación controlada | 🟠 Alta |
+| **P107** | **DeepFused — Hybrid IMU+DL (gyro+optical flow) supera a IMU puro** | **🟠 Alta** |
+| **P108** | **RStab — SOTA 0.92 estabilidad, deep learning 3D** | **🟠 Alta** |
+| **P109** | **"Let's Roll" — RS correction no necesaria para detección** | **🟠 Alta (variable a medir)** |
 | D2  | Gyroflow Documentation | ⚪ Informativa |
 | D5  | Gyroflow GitHub | ⚪ Informativa |
+| D7  | Gyroflow Plugins GitHub | ⚪ Informativa |
+| D8  | TehnoBlog — Comparativa estabilización | ⚪ Informativa |
 
 ### Etapa 7 — Pipeline de Datos (YOLO + MOT)
 | ID | Paper | Importancia |
@@ -255,8 +298,12 @@
 | P47 | Wang et al. — FruitSize distancia/ángulo | 🟠 Alta |
 | P34 | Dynamic Kalman — MOTA 95% | 🟠 Alta |
 | P35 | AgriSORT — Tracking agricultura | 🟠 Alta |
+| **P103** | **FEGW-YOLO — YOLOv8n retiene 71.9% mAP a blur severo** | **🟠 Alta** |
+| **P105** | **Knowledge Distillation — solo 2.5% drop al 100% velocidad** | **🟠 Alta** |
+| **P106** | **MDPI Electronics — YOLOv4 más robusto a blur que v8-v11** | **🟠 Alta** |
 | P54 | Parico & Ahamed — Pear YOLOv4+DeepSORT | 🟡 Media |
-| D6  | Object recognition + IMU | ⚪ Informativa |
+| P104 | Quantization Study — 11-15% mAP drop por blur medio | 🟡 Media |
+| D6  | Object recognition + IMU (zhouzypaul, Brown 2022) | ⚪ Informativa |
 
 ### Investigación P1 — Software de Captura (contexto general)
 | ID | Paper | Importancia |
@@ -269,6 +316,9 @@
 | ID | Paper | Importancia |
 |---|---|---|
 | P11-P26, P56 | Papers de estabilización, deblurring, RS | Varios |
+| P100-P109 | Papers de contradicciones y matices (investigación 2025) | Varios |
+
+> **Nota:** Los papers P100-P109 surgieron de una investigación específica de validación/contradicción de las afirmaciones del Paso 2. Ver sección "Contradicciones y Matices" en Investigacion-P2-IMU-Telemetria.md.
 
 ### Investigación P3 — Protocolo Caminata (contexto general)
 | ID | Paper | Importancia |
