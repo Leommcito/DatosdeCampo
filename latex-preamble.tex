@@ -1,0 +1,176 @@
+﻿%===============================================================================
+% PREAMBULO TESIS - Metodologia de Captura Manual con Smartphone
+% Para compilacion con XeLaTeX
+%===============================================================================
+
+%------------------------------------------------------------------------------
+% DOCUMENTCLASS
+%------------------------------------------------------------------------------
+\documentclass[12pt,oneside]{report}
+
+%------------------------------------------------------------------------------
+% ENCODING Y FUENTE (XeLaTeX)
+%------------------------------------------------------------------------------
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+%------------------------------------------------------------------------------
+% PAQUETES BASICOS
+%------------------------------------------------------------------------------
+\usepackage{inputenc}
+\usepackage[T1]{fontenc}
+
+%------------------------------------------------------------------------------
+% IDIOMA Y LOCALE (babel)
+%------------------------------------------------------------------------------
+\usepackage{spanish}
+\usepackage{es-lcroman}
+\usepackage{es-tabla}
+
+%------------------------------------------------------------------------------
+% MATEMATICAS
+%------------------------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+%------------------------------------------------------------------------------
+% GRAFICOS Y COLOR
+%------------------------------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+%------------------------------------------------------------------------------
+% HIPERVINCULOS (hyperref)
+%------------------------------------------------------------------------------
+\usepackage[
+    unicode=true,
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    pdftitle={Metodologia de Captura Manual con Smartphone para Deteccion YOLO y Seguimiento MOT en Huertos Densos de Mandarinas},
+    pdfauthor={Autor},
+    pdfsubject={Tesis de Investigacion}
+]{hyperref}
+
+%------------------------------------------------------------------------------
+% GEOMETRIA (margenes para encuadernacion)
+%------------------------------------------------------------------------------
+\usepackage[
+    left=2.5cm,
+    right=2.5cm,
+    top=3cm,
+    bottom=3cm,
+    bindingoffset=1cm
+]{geometry}
+
+%------------------------------------------------------------------------------
+% INTERLINEADO
+%------------------------------------------------------------------------------
+\usepackage{setspace}
+\setstretch{1.5}
+
+%------------------------------------------------------------------------------
+% ENCABEZADOS Y PIES (fancyhdr)
+%------------------------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{}
+\setlength{\headheight}{14pt}
+
+%------------------------------------------------------------------------------
+% FORMATO DE TITULOS (titlesec)
+%------------------------------------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+    {\normalfont\fontsize{14}{17}\bfseries}{\thechapter}{1em}{}
+\titleformat{\section}
+    {\normalfont\fontsize{12}{14}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+    {\normalfont\fontsize{11}{13}\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+    {\normalfont\fontsize{11}{13}\bfseries}{\thesubsubsection}{1em}{}
+
+%------------------------------------------------------------------------------
+% TABLAS Y ARRAYS
+%------------------------------------------------------------------------------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{multirow}
+
+%------------------------------------------------------------------------------
+% VERBATIM Y CODIGO
+%------------------------------------------------------------------------------
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    frame=single,
+    breaklines=true,
+    backgroundcolor=\color{gray!10}
+}
+
+%------------------------------------------------------------------------------
+% LISTAS (enumitem)
+%------------------------------------------------------------------------------
+\usepackage{enumitem}
+\setlist[itemize]{topsep=0pt, itemsep=0pt, partopsep=0pt}
+\setlist[enumerate]{topsep=0pt, itemsep=0pt, partopsep=0pt}
+
+%------------------------------------------------------------------------------
+% MICROTIPOGRAFIA
+%------------------------------------------------------------------------------
+\usepackage{microtype}
+
+%------------------------------------------------------------------------------
+% SIMBOLOS EXTRA
+%------------------------------------------------------------------------------
+\usepackage{textcomp}
+\usepackage{pifont}
+
+%------------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS PARA EMOJIS/MARCADORES
+%------------------------------------------------------------------------------
+\newcommand{\checkmark}{\textcolor{green!50!black}{\ding{52}}}
+\newcommand{\xmark}{\textcolor{red}{\ding{56}}}
+\newcommand{\lock}{\textbf{[LOCK]}}
+
+%------------------------------------------------------------------------------
+% COMANDOS UTILITARIOS
+%------------------------------------------------------------------------------
+\newcommand{\todo}[1]{{\color{blue}#1}}
+\newcommand{\note}[1]{{\color{orange}#1}}
+
+%------------------------------------------------------------------------------
+% TITULO DEL DOCUMENTO
+%------------------------------------------------------------------------------
+\title{
+    Metodolog\'ia de Captura Manual con Smartphone para Detecci\'on YOLO y Seguimiento MOT en Huertos Densos de Mandarinas
+}
+\author{Autor}
+\date{\today}
+
+%===============================================================================
+% INICIO DEL DOCUMENTO
+%===============================================================================
+\begin{document}
+
+% Titulo
+\maketitle
+
+% Indices
+
+% Espacio
+
+%===============================================================================
+% FIN DEL DOCUMENTO
+%===============================================================================

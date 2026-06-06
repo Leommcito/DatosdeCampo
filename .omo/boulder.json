@@ -1,7 +1,8 @@
-{
-  "active_plan": "D:/Universidad/Tesis/Codigo opencodego/Datos de campo obtencion/DatosdeCampo/.omo/plans/fusion-metodologia.md",
-  "started_at": "2026-06-06T01:00:00-03:00",
-  "session_ids": [],
-  "plan_name": "fusion-metodologia",
-  "worktree_path": null
+﻿{
+    "plan_name":  "markdown-to-latex",
+    "started_at":  "2026-06-06T02:10:33.8541048-03:00",
+    "session_ids":  [
+                        null
+                    ],
+    "active_plan":  "D:\\Universidad\\Tesis\\Codigo opencodego\\Datos de campo obtencion\\DatosdeCampo\\.omo\\plans\\markdown-to-latex.md"
 }
