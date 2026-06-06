@@ -64,8 +64,8 @@
 |---|---|---|---|
 | **Resolución** | 4K (3840×2160) o 1080p (1920×1080) | 4K provee más píxeles por fruto pequeño. Si overheating, bajar a 1080p. | [P28] |
 | **FPS** | 30 | Suficiente para tracking (ByteTrack, CoTracker3). 60fps duplica el dataset sin ganancia probada. | — |
-| **ISO** | 100-200 (lo más bajo posible con luz de día) | Minimiza ruido digital que YOLO puede confundir con textura de fruto. | [P40], [D1] |
-| **Shutter speed** | 1/60s (regla 180°) o 1/120s (si hay motion blur) | Balance entre motion blur natural y nitidez de frame. | [P40], [D1] |
+| **ISO** | 200 fijo (100 si hay suficiente luz) | ISO=200 documentado en [P99] (Open Camera, fenotipado de hojas). Principio de fijar ISO respaldado por [P55] (ISO fijo en laboratorio) y [P57] (ganancia baja en cámara industrial). ISO=100 es decisión del protocolo (mínimo práctico en exteriores), no valor extraído de la literatura. | [P99], [P55], [P57] |
+| **Shutter speed** | 1/100s fijo (rango 1/60-1/120) | Shutter=1/100s documentado en [P99] (Open Camera). [P75] recomienda ≥1/200s para walking shake, pero 1/100s es compromiso entre blur y suficiente luz sin flash. Regla 180° (cinematografía, 30fps) da 1/60s como límite inferior. | [P99], [P75] |
 | **Autofocus (AF)** | LOCK — tocar la fruta más cercana para enfocar, luego lock | Evita focus hunting al caminar entre ramas. | [D1], [P40] |
 | **Exposición (AE)** | LOCK | Evita cambios de exposición al pasar por sombra/sol. | [D1], [P40], [P41] |
 | **White balance (WB)** | Daylight (~5200K) o Cloudy (~6500K) | Evita cambios de color cielo/nube/sombra. | [D1] |

@@ -172,6 +172,20 @@ Resultados de búsqueda específica para justificar el uso de controles manuales
 
 ---
 
+### Paper 14: Sistema de adquisición proximal para viñedos (Sensors, 2023) — [P49] 🟠 Alta
+
+| Hallazgo | Valor |
+|---|---|
+| **Cámara** | Basler Ace acA2440-20gc (5 MP, **global shutter**, 2/3" CMOS) |
+| **Iluminación** | Flash xenon Phoxene SX3 sincronizado, **exposición ~250 µs** |
+| **Control** | Raspberry Pi 4 + app Android propia vía Wi-Fi (exposición, frecuencia, start/stop) |
+| **Experiencia** | **8 años** de experimentos en campo (yield estimation, disease detection) |
+| **Dato clave** | "A powerful xenon flash provided enough... brief exposure time (approximately 250 µs)" — justifica shutter fijo en campo |
+
+**Relevancia:** Respalda el uso de **global shutter** + **exposición fija corta** + **iluminación controlada** en captura agrícola móvil. Aunque usa cámara industrial (no smartphone), los principios de control de exposición y flash sincronizado son directamente transferibles al protocolo de captura con smartphone.
+
+---
+
 ### Tabla de evidencia cuantitativa — Paso 1
 
 | Problema | Evidencia | Fuente | ID |
@@ -184,6 +198,7 @@ Resultados de búsqueda específica para justificar el uso de controles manuales
 | Focus hunting degrada calidad | Lente oscila, FoV cambia | CVPR (2025) | [P61] |
 | Camera2 API necesario para control científico | Tone mapping irreversible. 74% menor MAE con lineal | Frontiers Digit. Health (2023) | [P62] |
 | Luz no controlada destruye detección | F1 0.82 → 0.13 con glare | Kiwifruit (2020) | [P63] |
+| Exposición fija corta + flash sincronizado | ~250 µs con flash xenon, 8 años de campo | Vineyard proximal sensing (2023) | [P49] |
 | ISP automático degrada detección YOLO | Contraste/gamma/saturación causan falsos negativos | ISP Tuning (2023) | [P95] |
 | Parámetros auto causan fluctuación | 13-14% fluctuación en detección en escenas estáticas | ECCV (2022) | [P96] |
 | ISP pipeline pierde información útil | 7.1% más precisión entrenando en RAW vs ISP-processed | ISP-less CV (2022) | [P97] |
@@ -279,7 +294,7 @@ Una investigación bibliográfica complementaria (Junio 2026) encontró evidenci
 | ID | Evidencia | Lo que demuestra |
 |---|---|---|
 | [P95] | ISP Tuning (MDPI J. Imaging, 2023) | Contraste, gamma y saturación del ISP automático degradan significativamente YOLOv5/v8, Faster R-CNN y RT-DETR. Los objetos pequeños son los más afectados. |
-| [P96] | ECCV 2022 - "Unintentional Adversary" | La cámara con parámetros automáticos causa 13-14% fluctuación en detección en escenas estáticas. 5.4x falsos track-IDs. |
+| [P96] | ECCV 2022 - "Unintentional Adversary" | La cámara con parámetros automáticos causa 13-14% fluctuación en detección en escenas estáticas. Original YOLOv5 generó 157 track-IDs vs 94 con transfer-learning (40.1% menos errores). |
 | [P97] | RAW > ISP-processed (ISP-less CV, 2022) | 7.1% más precisión entrenando en dominio RAW vs RGB procesado por ISP. El ISP pierde información útil para detección. |
 | [P98] | AdaptiveISP (NeurIPS 2024) | El pipeline ISP por defecto es sub-óptimo para detección. AdaptiveISP logra 28% mejor mAP optimizando el ISP para la tarea. |
 
@@ -310,7 +325,7 @@ El paper de ECCV 2022 "Why is the video analytics accuracy fluctuating" demuestr
 - **13-14% de fluctuación** en conteo de detecciones sobre escenas **estáticas** (sin movimiento)
 - La causa raíz son los cambios automáticos de parámetros de cámara
 - Transfer-learning redujo errores de tracking en **~40%**
-- Modelo original creó **157 track-IDs** para solo 29 objetos reales (5.4x falsos)
+- Modelo original YOLOv5 generó **157 track-IDs** vs **94** con transfer-learning (**40.1% menos errores** en tracking)
 
 **Implicación**: El simple hecho de usar modo automático introduce **ruido en la medición** que no existe en modo manual. Esto justifica directamente el bloqueo de AE/AF/WB.
 
@@ -349,9 +364,10 @@ La importancia de P62 se ha elevado a 🔴 **Crítico** por la solidez del halla
 ### Open Camera documentada en investigación previa [P99]
 
 Se encontró el paper PMC12057810 (2024) que **documenta explícitamente Open Camera v1.52** con configuración detallada:
-- ISO=200 fijo, shutter=1/100s
-- AF deshabilitado, compensación de exposición deshabilitada
-- Razón explícita: "to ensure uniformity across images"
+- **Dispositivo:** Redmi Note 7 Pro (Sony IMX 586, 48 MP, f/1.8)
+- **Configuración:** ISO=200 fijo, shutter=1/100s, AF deshabilitado, compensación de exposición deshabilitada
+- **Iluminación:** 4 tubos LED neutral-white (**4000 K**) a distancia fija de **50 cm** cámara-hoja
+- **Razón explícita:** "to ensure uniformity across images"
 
 Esto **matiza** el claim de que "ningún paper documenta apps de cámara". La afirmación correcta es:
 

@@ -96,8 +96,8 @@ Ver archivo completo: [`Tabla-Maestra-Papers.md`](Tabla-Maestra-Papers.md)
 | **App** | Open Camera (Camera2 API ON) | Única gratuita con AF/AE/WB Lock |
 | **Resolución** | 4K (3840×2160) o 1080p | Píxeles por fruto pequeño |
 | **FPS** | 30 | Suficiente para tracking |
-| **ISO** | 100-200 fijo | Minimiza ruido digital [P57][P58] |
-| **Shutter** | 1/60s o 1/120s fijo | Motion blur controlado [P57] |
+| **ISO** | 200 fijo (100 si hay suficiente luz) | ISO=200 documentado en [P99] (Open Camera, fenotipado). Principio de fijar ISO respaldado por [P55] (ISO fijo en laboratorio) y [P57] (ganancia baja en cámara industrial). ISO=100 es decisión del protocolo (mínimo práctico en exteriores), no valor extraído de la literatura. |
+| **Shutter** | 1/100s fijo (rango 1/60-1/120) | Shutter=1/100s documentado en [P99] (Open Camera). [P75] recomienda ≥1/200s para walking shake, pero 1/100s es compromiso entre blur y suficiente luz sin flash. Regla 180° (cinematografía, 30fps) da 1/60s como límite inferior. |
 | **AF** | 🔒 LOCK | Evita focus hunting [P61] |
 | **AE** | 🔒 LOCK | Brillo constante [P58][P60] |
 | **WB** | 🔒 LOCK | Color estable [P62] |
@@ -164,7 +164,7 @@ AE Lock (exposición fija)
 
 | Paso | IDs de referencia |
 |---|---|
-| **Paso 1** — App de Cámara | [P40][P41][P49][P55][P57][P58][P59][P60][P61][P62][P63][D1] |
+| **Paso 1** — App de Cámara | [P40][P41][P49][P55][P57][P58][P59][P60][P61][P62][P63][P95][P96][P97][P98][P99][D1] |
 | **Paso 2** — Estabilización | [P11][P12][P13][P18][P22][P26][P43][P51][P64][P65][P66][P67][P68][D2][D5] |
 | **Paso 3** — Logging IMU | [P23][P25][D3][D4] |
 | **Paso 4** — Sincronización | [P23][P24][D4] |

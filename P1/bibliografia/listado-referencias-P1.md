@@ -288,8 +288,8 @@ Estos papers proporcionan **contexto adicional** y documentación técnica de la
 | **AE Lock** (Exposición fija) | P57, P58, P60, P96 |
 | **AF Lock** (Foco fijo) | P61, P96 |
 | **WB Lock** (Balance de blancos fijo) | P62 |
-| **ISO fijo (100-200)** | P55, P57, P99 |
-| **Shutter fijo (1/60-1/120)** | P49, P55, P57 |
+| **ISO fijo** | P55 (principio, valor ISO=25), P57 (principio, baja ganancia), P99 (valor ISO=200 documentado en Open Camera) |
+| **Shutter fijo** | P49 (principio, ~250µs cámara industrial), P55 (principio, 1/400s arroz), P99 (valor 1/100s documentado en Open Camera) |
 | **Camera2 API / Open Camera** | P40, P62, P99, D1 |
 | **ISP automático degrada detección** | P95, P97, P98 |
 | **Condiciones de luz controladas** | P41, P59, P63 |

@@ -208,9 +208,10 @@ POST-PROCESAMIENTO (después):
 | Decisión | Tipo de evidencia | Fuente (paper real) | Ref. |
 |---|---|---|---|---|
 | Open Camera vs nativa | Documentación técnica | [Open Camera Help](https://opencamera.sourceforge.io/help.html) | [D1] |
-| AF/AE/WB Lock | **Indirecta** — papers que demuestran que iluminación variable degrada detección | **FNF paper** (Kurtser et al.): exposición fija 20µs mejora detección. **ICNet (2025)**: compensación de iluminación mejora PSNR 28→40.79dB. **Coffee monitoring (Sensors, 2020)**: AUTO causa blur, necesitaron IMU para seleccionar frames. | [P40], [P41], [P27] |
-| Shutter 1/60-1/120 | Paper + Regla 180° | **Rolling shutter + distance (Sensors, 2020)**: RSE inversamente proporcional a distancia, lineal con velocidad. **Rice GMC (Sensors, 2021)**: ISO=25, shutter=1/400s fijo. | [P40] |
-| ISO 100-200 | Paper que fijó ISO | **Rice GMC (Sensors, 2021)**: ISO=25 fijo para minimizar variabilidad. | [P40] |
+| AF/AE/WB Lock | **Directa** — papers demuestran que parámetros fijos mejoran consistencia | **LEDs paper (2021)**: 85% menos variación HSV con exposición fija. **Phenotyping (2018)**: MSE 1.57 manual vs 4.26 auto. **ECCV (2022)**: 13-14% fluctuación en detección por cambios automáticos. **FNF paper (Kurtser)**: exposición fija 20µs mejora detección. **ICNet (2025)**: compensación de iluminación mejora PSNR 28→40.79dB. | [P57], [P58], [P96], [P40], [P41] |
+| Shutter 1/60-1/120 | Documentación técnica + Paper parcial | **P99 (PMC12057810, 2024)**: shutter=1/100s documentado en Open Camera v1.52. **P75 (Motion Blur Review, Heliyon 2024)**: recomienda ≥1/200s para walking shake (más rápido que el rango propuesto). Rango 1/60-1/120s es compromiso práctico para captura sin flash en exteriores, complementado con regla 180° (cinematografía, 30fps). | [P99], [P75] |
+| ISO 200 | Paper documenta valor | **P99 (PMC12057810, 2024)**: ISO=200 fijo en Open Camera v1.52 para fenotipado de hojas. Razón explícita: "to ensure uniformity across images". | [P99] |
+| ISO 100 | Sin respaldo bibliográfico directo | Decisión del protocolo: mínimo ISO práctico en exteriores con luz de día. El principio de "usar el ISO más bajo posible" está respaldado por [P55] (ISO=25 en arroz, laboratorio) y [P57] (ganancia baja en cámara industrial). | — |
 | Gimbal | **Paper directo** | **Gašparović & Jurjević**: gimbal mejora 6x estabilidad de orientación. Roll/pitch 69.9°→2.56°. **sUAS gimbal survey**: MIS (gimbal) > OIS > DIS. | [P43] |
 | Sensor Logger 100Hz | Paper específico | **Fan et al. (2025)** — Sensors MDPI. Walking 1.2m/s, 100Hz suficiente. | [P25] |
 | Gyroflow | Documentación técnica + GitHub | [gyroflow.xyz](https://gyroflow.xyz) — 8.9k stars. Soporta Sensor Logger. | [P11], [P13], [P18], [D2] |
@@ -222,10 +223,11 @@ POST-PROCESAMIENTO (después):
 
 | Decisión | ¿Respaldo real en paper con nombre? | Confianza | Referencias |
 |---|---|---|---|---|
-| Open Camera (app específica) | ❌ Inferencia — ningún paper agrícola nombra Open Camera | Baja | [D1] |
-| AF/AE/WB Lock | ⚠️ Indirecto — papers demuestran que estabilizar captura mejora detección | Media | [P40], [P41] |
-| Shutter 1/60-1/120 | ⚠️ Parcial — hay papers que fijan shutter | Media | [P40] |
-| ISO 100-200 | ⚠️ Parcial — hay paper que fija ISO=25 | Media | [P40] |
+| Open Camera (app específica) | ⚠️ Solo 1 paper (P99, fenotipado de hojas) documenta Open Camera con configuración. Ningún paper en detección de frutos. | Media | [P99], [D1] |
+| AF/AE/WB Lock | ✅ **Directo** — P57 (85% menos variación HSV), P58 (MSE 1.57 vs 4.26), P96 (13-14% fluctuación) | **Alta** | [P57], [P58], [P96] |
+| Shutter 1/100s | ⚠️ Parcial — [P99] documenta 1/100s, [P75] recomienda ≥1/200s | Media | [P99], [P75] |
+| ISO=200 | ✅ **Valor documentado en paper** — P99 (PMC12057810) con Open Camera | **Alta** | [P99] |
+| ISO=100 | ❌ **Sin respaldo bibliográfico** — decisión del protocolo | Baja | — |
 | **Gimbal** | ✅ **Sí, paper directo** — Gašparović & Jurjević | **Alta** | [P43] |
 | **Sensor Logger 100Hz** | ✅ **Sí, paper directo** — Fan et al. (2025) | **Alta** | [P25] |
 | **Gyroflow** | ✅ Sí — docs técnicas + GitHub + papers IMU | **Alta** | [P11], [P13], [D2] |
@@ -235,8 +237,8 @@ POST-PROCESAMIENTO (después):
 
 ### Gap confirmado para la tesis
 
-**No existe un paper agrícola que:**
-1. Nombre una app de captura específica (Open Camera, Filmic Pro)
+**Solo 1 paper agrícola (P99, fenotipado de hojas) nombra una app de captura específica (Open Camera v1.52). No existe un paper agrícola que:**
+1. Documente Open Camera o Filmic Pro para **detección de frutos en video**
 2. Compare auto vs manual con métricas YOLO
 3. Compare distancias al dosel con métricas de detección para smartphone
 4. Compare walking speeds con métricas de tracking
